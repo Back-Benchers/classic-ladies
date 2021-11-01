@@ -2,11 +2,13 @@ import express from 'express';
 import helmet from 'helmet';
 import winston from 'winston';
 import bodyParser from 'body-parser';
+import dotenv from 'dotenv';
 
 import log from "./lib/logger";
 import apiClient from './api/apiClientRouter';
 import apiAdmin from './api/apiAdminRouter';
 
+dotenv.config();
 
 const app = express();
 
@@ -22,9 +24,8 @@ app.get('/', function(req, res) {
 app.use('/api', apiClient);
 app.use('/admin', apiAdmin);
 
-const server = app.listen(3000, function() {
-    var host = server.address().address;
-    var port = server.address().port;
-
+const server = app.listen(process.env.PORT, function() {
+    let host = server.address().address;
+    let port = server.address().port;
     winston.info("app listening at http://localhost:" + port)
 });
