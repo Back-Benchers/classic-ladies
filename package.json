@@ -1,0 +1,32 @@
+{
+    "name": "theclassicladies",
+    "version": "1.0.0",
+    "description": "Web App Project (ReactJS)",
+    "main": "src/app/index.js",
+    "scripts": {
+        "dev:backend": "nodemon --es-module-specifier-resolution=node src/app/index.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Back-Benchers/TheClassicLadies.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Back-Benchers/TheClassicLadies/issues"
+    },
+    "homepage": "https://github.com/Back-Benchers/TheClassicLadies#readme",
+    "dependencies": {
+        "body-parser": "^1.19.0",
+        "express": "^4.17.1",
+        "helmet": "^4.6.0",
+        "multer": "^1.4.3",
+        "winston": "^3.3.3"
+    },
+    "type": "module",
+    "devDependencies": {
+        "eslint": "^8.1.0",
+        "nodemon": "^2.0.14"
+    }
+}
