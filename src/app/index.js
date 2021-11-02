@@ -7,6 +7,7 @@ import dotenv from 'dotenv';
 import log from "./lib/logger";
 import apiClient from './api/apiClientRouter';
 import apiAdmin from './api/apiAdminRouter';
+import table from './database/table';
 
 dotenv.config();
 
@@ -16,6 +17,8 @@ app.use(helmet());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(log.sendResponse);
+
+// table.sequelize.sync();
 
 app.get('/', function(req, res) {
     res.send('Hello World');

@@ -1,3 +1,4 @@
+import product from "../../database/controller/product";
 import upload from "../../lib/fileUpload";
 
 class ProductsRoute {
@@ -21,7 +22,7 @@ class ProductsRoute {
     }
 
     getProducts(req, res, next) {
-        res.send('Hello prod:admin');
+        product.findOne(req, res);
     }
 
     uploadImages(req, res, next) {
