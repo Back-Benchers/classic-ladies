@@ -14,7 +14,7 @@ const productModel = (sequelize) => {
             type: Sequelize.BOOLEAN
         },
         amount: {
-            type: Sequelize.NUMBER,
+            type: Sequelize.INTEGER,
             allowNull: false
         }
     });

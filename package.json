@@ -5,10 +5,10 @@
     "main": "src/app/index.js",
     "scripts": {
         "dev:backend": "nodemon --es-module-specifier-resolution=node src/app/index.js",
-        "pg:create": "docker run --name classicpg -e POSTGRES_PASSWORD=password -d postgres",
-        "pg:connect": "docker exec -it classicpg psql -U postgres",
-        "pg:stop": "docker stop classicpg",
-        "pg:restart": "docker restart classicpg"
+        "pg:connect": "docker exec -it theclassicladies_postgres_1 psql -U postgres",
+        "pg:start-detached": "docker compose up -d",
+        "pg:start": "docker compose up",
+        "pg:stop": "docker compose down"
     },
     "repository": {
         "type": "git",

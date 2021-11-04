@@ -1,8 +1,9 @@
 const dbConfig = {
     HOST: "localhost",
+    PORT: "5432",
     USER: "postgres",
-    PASSWORD: "password",
-    DB: "testdb",
+    PASSWORD: "postgres",
+    DB: "app",
     dialect: "postgres",
     pool: {
         max: 5,

@@ -6,3 +6,4 @@ S3/*.jpg
 S3/*.png
 S3/*.jpeg
 S3/*.svg
+postgres/

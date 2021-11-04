@@ -18,26 +18,25 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(log.sendResponse);
 
-// table.sequelize.sync({ alter: true })
+table.sequelize.sync({ alter: true })
 
 app.get('/', function(req, res) {
     res.send('Hello World');
 })
 
 function notFound(req, res, next) {
-  res.status(404);
-  const error = new Error(`Not Found - ${req.originalUrl}`);
-  next(error);
+    res.status(404);
+    const error = new Error(`Not Found - ${req.originalUrl}`);
+    next(error);
 }
 
 function errorHandler(err, req, res, next) {
-  res.status(res.statusCode || 500);
-  res.json({
-    message: err.message,
-    stack: err.stack
-  });
+    res.status(res.statusCode || 500);
+    res.json({
+        message: err.message,
+        stack: err.stack
+    });
 }
-
 
 app.use('/api', apiClient);
 app.use('/admin', apiAdmin);
