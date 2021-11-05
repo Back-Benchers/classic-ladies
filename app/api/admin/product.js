@@ -1,6 +1,5 @@
 import product from "../../database/controller/product";
-import fileUpload from "../../filesUtil/fileUpload";
-import upload from "../../filesUtil/fileUpload";
+import fileOp from "../../filesUtil/fileOperation";
 
 class ProductsRoute {
     constructor(router) {
@@ -27,8 +26,8 @@ class ProductsRoute {
     }
 
     uploadImages(req, res, next) {
-        // fileUpload.s3Upload(req,res);
-        fileUpload.upload(req, res, (err) => {
+        // fileOp.s3Upload(req,res);
+        fileOp.upload(req, res, (err) => {
             if (err) {
                 res.sendStatus(500);
             }

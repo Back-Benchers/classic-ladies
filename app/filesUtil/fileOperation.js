@@ -56,4 +56,11 @@ const sendFile = (request, response) => {
     response.sendFile(path.join(filePath));
 };
 
-export default { upload, s3Upload, sendFile };
+const sendFileFromS3 = async(request, response) => {
+    const bucket = config.s3Config.bucket;
+    const file = request.param.file
+    const data = await s3.getObject({ bucket, file }).promise()
+    if (data.Body) { return data.Body.toString("utf-8") } else { return undefined }
+};
+
+export default { upload, s3Upload, sendFile, sendFileFromS3 };
