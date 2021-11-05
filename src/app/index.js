@@ -4,7 +4,7 @@ import winston from 'winston';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 
-import log from "./lib/logger";
+import log from "./logger/logger";
 import apiClient from './api/apiClientRouter';
 import apiAdmin from './api/apiAdminRouter';
 import table from './database/table';

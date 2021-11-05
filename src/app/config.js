@@ -13,4 +13,11 @@ const dbConfig = {
     }
 };
 
-export default dbConfig;
+const s3Config = {
+    accessKeyId: "AWS_ACCESS_KEY_ID",
+    secretAccessKey: "AWS_SECRET_ACCESS_KEY",
+    bucket: "S3Bucket",
+    region: 'us-west-2'
+}
+
+export default { dbConfig, s3Config };
