@@ -1,6 +1,7 @@
 import multer from "multer";
 import AWS from 'aws-sdk';
 import config from "../config";
+import fs from "fs";
 
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
@@ -47,6 +48,12 @@ const s3Upload = (request, response) => {
             return response.status(500).send(err);
         }
     });
-}
+};
 
-export default { upload, s3Upload };
+
+const sendFile = (request, response) => {
+    const filePath = request.param.file;
+    response.sendFile(path.join(filePath));
+};
+
+export default { upload, s3Upload, sendFile };

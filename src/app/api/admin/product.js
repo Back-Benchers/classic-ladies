@@ -28,7 +28,7 @@ class ProductsRoute {
 
     uploadImages(req, res, next) {
         // fileUpload.s3Upload(req,res);
-        upload(req, res, (err) => {
+        fileUpload.upload(req, res, (err) => {
             if (err) {
                 res.sendStatus(500);
             }
