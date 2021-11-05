@@ -5,7 +5,7 @@ import fs from "fs";
 
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
-        cb(null, 'S3')
+        cb(null, 's3')
     },
     filename: (req, file, cb) => {
         cb(null, Date.now() + '-' + file.originalname)

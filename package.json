@@ -4,9 +4,10 @@
     "description": "Web App Project (ReactJS)",
     "main": "src/app/index.js",
     "scripts": {
-        "dev:backend": "nodemon --es-module-specifier-resolution=node src/app/index.js",
+        "dev:app": "nodemon --es-module-specifier-resolution=node app/index.js",
+        "dev:ui": "npm run --prefix ui start",
         "pg:connect": "docker exec -it theclassicladies_postgres_1 psql -U postgres",
-        "pg:start-detached": "docker compose up -d",
+        "pg:start-d": "docker compose up -d",
         "pg:start": "docker compose up",
         "pg:stop": "docker compose down"
     },
@@ -25,6 +26,7 @@
         "aws-sdk": "^2.1022.0",
         "body-parser": "^1.19.0",
         "dotenv": "^10.0.0",
+        "eslint": "^7.11.0",
         "express": "^4.17.1",
         "file-type": "^16.5.3",
         "helmet": "^4.6.0",
@@ -38,7 +40,6 @@
     },
     "type": "module",
     "devDependencies": {
-        "eslint": "^8.1.0",
         "nodemon": "^2.0.14"
     }
 }
