@@ -20,4 +20,6 @@ const s3Config = {
     region: 'us-west-2'
 }
 
-export default { dbConfig, s3Config };
+const jwtSecretKey = "swallaalao"
+
+export default { dbConfig, s3Config, jwtSecretKey };
