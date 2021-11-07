@@ -1,7 +1,7 @@
 import Sequelize from "sequelize";
 
-const productModel = (sequelize) => {
-    const product = sequelize.define("product", {
+const orderModel = (sequelize) => {
+    const product = sequelize.define("order", {
         title: {
             type: Sequelize.STRING,
             allowNull: false
@@ -15,11 +15,11 @@ const productModel = (sequelize) => {
         },
         amount: {
             type: Sequelize.INTEGER,
-            allowNull: false,
+            allowNull: false
         }
     });
 
     return product;
 }
 
-export default productModel;
+export default orderModel;

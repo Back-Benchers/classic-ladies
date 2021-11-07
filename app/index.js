@@ -38,6 +38,7 @@ function errorHandler(err, req, res, next) {
     });
 }
 
+app.use('/auth', auth);
 app.use('/api', apiClient);
 app.use('/admin', apiAdmin);
 app.use(notFound);
