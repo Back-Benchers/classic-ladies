@@ -46,4 +46,5 @@ const server = app.listen(process.env.PORT, function() {
     let port = server.address().port;
     winston.info("app listening at http://localhost:" + port);
     table.sequelize.sync({ alter: true });
+    winston.info("db conn esablished");
 });
