@@ -1,5 +1,5 @@
 const dbConfig = {
-    HOST: "localhost",
+    HOST: "postgres",
     PORT: "5432",
     USER: "postgres",
     PASSWORD: "postgres",

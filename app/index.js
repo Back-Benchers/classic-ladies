@@ -18,8 +18,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(log.sendResponse);
 
-table.sequelize.sync({ alter: true })
-
 app.get('/', function(req, res) {
     res.send('Hello World');
 })
@@ -38,13 +36,14 @@ function errorHandler(err, req, res, next) {
     });
 }
 
-app.use('/auth', auth);
 app.use('/api', apiClient);
 app.use('/admin', apiAdmin);
 app.use(notFound);
 app.use(errorHandler);
+
 const server = app.listen(process.env.PORT, function() {
     let host = server.address().address;
     let port = server.address().port;
-    winston.info("app listening at http://localhost:" + port)
+    winston.info("app listening at http://localhost:" + port);
+    table.sequelize.sync({ alter: true });
 });

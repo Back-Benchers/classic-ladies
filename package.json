@@ -6,10 +6,9 @@
     "scripts": {
         "dev:app": "nodemon --es-module-specifier-resolution=node app/index.js",
         "dev:ui": "npm run --prefix ui start",
-        "pg:connect": "docker exec -it theclassicladies_postgres_1 psql -U postgres",
-        "pg:start-d": "docker compose up -d",
-        "pg:start": "docker compose up",
-        "pg:stop": "docker compose down"
+        "pg:connect": "docker exec -it classic-ladies_postgres_1 psql -U postgres",
+        "dev": "docker compose up",
+        "down": "docker compose down"
     },
     "repository": {
         "type": "git",
