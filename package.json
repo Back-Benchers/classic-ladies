@@ -5,7 +5,7 @@
     "main": "src/app/index.js",
     "scripts": {
         "dev:app": "nodemon --es-module-specifier-resolution=node app/index.js",
-        "dev:ui": "npm run --prefix ui start",
+        "dev:ui": "npm run --prefix ui dev",
         "dev:create": "docker compose up -d",
         "dev:start": "docker compose start",
         "dev:stop": "docker compose stop",
