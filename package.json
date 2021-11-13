@@ -7,7 +7,7 @@
         "dev:app": "nodemon --es-module-specifier-resolution=node app/index.js",
         "dev:ui": "npm run --prefix ui start",
         "pg:connect": "docker exec -it classic-ladies_postgres_1 psql -U postgres",
-        "dev": "docker compose up",
+        "dev": "docker compose up -d",
         "down": "docker compose down"
     },
     "repository": {
