@@ -1,37 +1,36 @@
 import Sequelize from "sequelize";
 
-const orderModel = (sequelize) => {
-    const order = sequelize.define("order", {
+const customerModel = (sequelize) => {
+    const customer = sequelize.define("customer", {
         id: {
             type: Sequelize.UUID,
             allowNull: true
         },
-        product: {
+        name: {
             type: Sequelize.STRING,
             allowNull: false
         },
-        quantity: {
-            type: Sequelize.INTEGER
+        password: {
+            type: Sequelize.UUID,
+            allowNull: false
         },
-        amount: {
-            type: Sequelize.DOUBLE,
+        number: {
+            type: Sequelize.STRING,
+            allowNull: false
+        },
+        email: {
+            type: Sequelize.STRING,
             allowNull: false
         },
         address: {
-            type: Sequelize.STRING,
-            allowNull: false
+            type: Sequelize.STRING
         },
-        deliveredAt: {
-            type: Sequelize.DATE,
-            allowNull: false
-        },
-        status: {
-            type: Sequelize.STRING,
-            allowNull: false
+        adminStatus: {
+            type: Sequelize.INTEGER
         }
     });
 
-    return order;
+    return customer;
 }
 
-export default orderModel;
+export default customerModel;
