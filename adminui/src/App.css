@@ -1,0 +1,13 @@
+.app {
+  color: var(--txt-color);
+}
+
+.app__content {
+  padding-left: var(--sidebar-width);
+  background-color: var(--second-bg);
+  min-height: 100vh;
+}
+
+.app__content-main {
+  padding: 30px;
+}
