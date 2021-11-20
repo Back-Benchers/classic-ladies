@@ -1,10 +1,11 @@
 import Sequelize from "sequelize";
 
-const customerModel = (sequelize) => {
-    const customer = sequelize.define("customer", {
+const userModel = (sequelize) => {
+    const user = sequelize.define("user", {
         id: {
             type: Sequelize.UUID,
-            allowNull: true
+            primaryKey: true,
+            primarKey: true
         },
         name: {
             type: Sequelize.STRING,
@@ -30,7 +31,7 @@ const customerModel = (sequelize) => {
         }
     });
 
-    return customer;
+    return user;
 }
 
-export default customerModel;
+export default userModel;

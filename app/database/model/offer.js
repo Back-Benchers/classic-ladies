@@ -4,7 +4,8 @@ const offerModel = (sequelize) => {
     const offer = sequelize.define("offer", {
         code: {
             type: Sequelize.STRING,
-            allowNull: false
+            allowNull: false,
+            primarKey: true
         },
         title: {
             type: Sequelize.STRING,
@@ -26,7 +27,7 @@ const offerModel = (sequelize) => {
             allowNull: false
         },
         categories: {
-            type: Sequelize.ARRAY,
+            type: Sequelize.ARRAY(Sequelize.STRING),
             allowNull: false
         }
     });
