@@ -22,7 +22,7 @@ export default function Header(props) {
 
         styleMenu: {
             top: menu ? 0 : "-100%",
-            backgroundColor: "#2b6777"
+            backgroundColor: "#ffffff"
         }
     };
 
@@ -33,7 +33,7 @@ export default function Header(props) {
     return (
         <header>
             <div className="logo">
-                <h1><Link to="/">kashkart</Link></h1>
+                <h1><Link to="/">Classic Ladies</Link></h1>
             </div>
 
             <form action="#" autoComplete="off">

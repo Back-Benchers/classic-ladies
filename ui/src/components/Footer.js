@@ -28,12 +28,6 @@ export default function Footer() {
                 <Link to="/">Cancellation Policy</Link>
                 <Link to="/">Customer Service</Link>
             </div>
-
-            <div className="copyright">
-                <CopyrightIcon style={styles.smallIcon} /> 
-                <p>{`${year.getFullYear()}, kamal.in`}</p>
-                <a href="https://github.com/kamaleshpati" target="_blank" rel="noreferrer" ><GitHubIcon /></a>
-            </div> 
         </footer>
     )
 }

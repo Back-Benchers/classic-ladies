@@ -1,25 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
-
 $primary-color: #2b6777;
 $secondary-color: #f2f2f2;
-
-@mixin flexCenter($direction, $justify) {
+$ternary-color: #ffffff;
+$text-color: #455560;
+$hover-color: #349eff;
+@mixin flexCenter($direction,
+$justify) {
     display: flex;
     justify-content: $justify;
     align-items: center;
     flex-direction: $direction;
 }
 
-@mixin bordered($width, $color) {
+@mixin bordered($width,
+$color) {
     border: $width solid $color;
 }
 
-@mixin spread($width, $height) {
+@mixin spread($width,
+$height) {
     width: $width;
     height: $height;
 }
 
-@mixin colour($background-color, $color) {
+@mixin colour($background-color,
+$color) {
     background-color: $background-color;
     color: $color;
 }
@@ -77,6 +82,7 @@ $secondary-color: #f2f2f2;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
+    -webkit-tap-highlight-color: transparent;
 }
 
 html {
@@ -85,7 +91,7 @@ html {
 
 a {
     text-decoration: none;
-    color: $secondary-color;
+    color: $text-color;
     outline: none;
 }
 
@@ -93,4 +99,8 @@ section {
     background-color: #eaeaea;
     padding: 20px 0 20px 0;
     min-height: 100vh;
+}
+
+input:focus {
+    border: 2px solid $hover-color;
 }
