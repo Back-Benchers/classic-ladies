@@ -4,7 +4,8 @@ const productModel = (sequelize) => {
     const product = sequelize.define("product", {
         id: {
             type: Sequelize.UUID,
-            allowNull: true
+            allowNull: true,
+            primaryKey: true
         },
         url: {
             type: Sequelize.STRING,
@@ -50,11 +51,11 @@ const productModel = (sequelize) => {
             allowNull: false,
         },
         sizes: {
-            type: Sequelize.ARRAY,
+            type: Sequelize.ARRAY(Sequelize.STRING),
             allowNull: false,
         },
         categories: {
-            type: Sequelize.ARRAY,
+            type: Sequelize.ARRAY(Sequelize.STRING),
             allowNull: false,
         },
         rating: {

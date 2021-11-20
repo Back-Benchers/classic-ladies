@@ -4,7 +4,8 @@ const orderModel = (sequelize) => {
     const order = sequelize.define("order", {
         id: {
             type: Sequelize.UUID,
-            allowNull: true
+            allowNull: false,
+            primaryKey: true
         },
         product: {
             type: Sequelize.STRING,

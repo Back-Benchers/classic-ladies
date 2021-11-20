@@ -4,7 +4,7 @@ const categoryModel = (sequelize) => {
     const category = sequelize.define("category", {
         id: {
             type: Sequelize.UUID,
-            allowNull: true
+            primaryKey: true
         },
         name: {
             type: Sequelize.STRING,
