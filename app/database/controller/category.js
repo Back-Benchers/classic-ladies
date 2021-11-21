@@ -1,7 +1,7 @@
 import winston from "winston";
 import table from "../table";
 
-const Product = table.product;
+const Category = table.category;
 
 const createOne = (req, res) => {
     // Validate request
@@ -13,21 +13,19 @@ const createOne = (req, res) => {
         return;
     }
 
-    // Create a Product
-    const product = {
+    const category = {
         title: req.body.title,
         description: req.body.description,
         trending: req.body.trending ? req.body.trending : false
     };
 
-    // Save Product in the database
-    Product.create(Product)
+    Category.create(category)
         .then(data => {
             res.send(data);
         })
         .catch(err => {
             res.status(500).send({
-                message: err.message || "Some error occurred while creating the Product."
+                message: err.message || "Some error occurred while creating the Category."
             });
         });
 };
@@ -35,20 +33,20 @@ const createOne = (req, res) => {
 const findOne = (req, res) => {
     const id = req.params.id;
 
-    Product.findByPk(id)
+    Category.findByPk(id)
         .then(data => {
             if (data) {
                 res.send(data);
             } else {
-                winston.error(`Cannot find Product with id=${id}.`);
+                winston.error(`Cannot find Category with id=${id}.`);
                 res.status(404).send({
-                    message: `Cannot find Product with id=${id}.`
+                    message: `Cannot find Category with id=${id}.`
                 });
             }
         })
         .catch(err => {
             res.status(500).send({
-                message: "Error retrieving Product with id=" + id
+                message: "Error retrieving Category with id=" + id
             });
         });
 };
@@ -56,24 +54,24 @@ const findOne = (req, res) => {
 const updateOne = (req, res) => {
     const id = req.params.id;
 
-    Product.update(req.body, {
+    Category.update(req.body, {
             where: { id: id }
         })
         .then(num => {
             if (num == 1) {
                 res.send({
-                    message: "Product was updated successfully."
+                    message: "Category was updated successfully."
                 });
             } else {
                 res.send({
-                    message: `Cannot update Product with id=${id}. Maybe Product was not found or req.body is empty!`
+                    message: `Cannot update Category with id=${id}. Maybe Category was not found or req.body is empty!`
                 });
             }
         })
         .catch(err => {
-            winston.error("Error updating Product with id=" + id)
+            winston.error("Error updating Category with id=" + id)
             res.status(500).send({
-                message: "Error updating Product with id=" + id
+                message: "Error updating Category with id=" + id
             });
         });
 };
@@ -81,24 +79,24 @@ const updateOne = (req, res) => {
 const deleteOne = (req, res) => {
     const id = req.params.id;
 
-    Product.destroy({
+    Category.destroy({
             where: { id: id }
         })
         .then(num => {
             if (num == 1) {
                 res.send({
-                    message: "Product was deleted successfully!"
+                    message: "Category was deleted successfully!"
                 });
             } else {
                 res.send({
-                    message: `Cannot delete Product with id=${id}. Maybe Product was not found!`
+                    message: `Cannot delete Category with id=${id}. Maybe Category was not found!`
                 });
             }
         })
         .catch(err => {
-            winston.error("Could not delete Product with id=" + id)
+            winston.error("Could not delete Category with id=" + id)
             res.status(500).send({
-                message: "Could not delete Product with id=" + id
+                message: "Could not delete Category with id=" + id
             });
         });
 };
