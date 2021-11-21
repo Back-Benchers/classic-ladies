@@ -4,7 +4,7 @@ WORKDIR /app
  
 COPY package*.json ./
  
-RUN npm install && npm run --prefix adminui watch
+RUN npm install
  
 COPY . .
  

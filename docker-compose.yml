@@ -18,6 +18,8 @@ services:
           - ./postgres:/var/lib/postgresql/data
 
     app:
+        container_name: app
+        hostname: app
         build:
           context: .
           dockerfile: Dockerfile
@@ -41,6 +43,8 @@ services:
     #       - app
 
     adminui:
+        container_name: adminui
+        hostname: adminui
         stdin_open: true
         environment:
           - CHOKIDAR_USEPOLLING=true
@@ -52,4 +56,20 @@ services:
         volumes:
           - /app/node_modules
           - ./adminui:/app
+    
+    # ui:
+    #     container_name: ui
+    #     hostname: ui
+    #     stdin_open: true
+    #     environment:
+    #       - CHOKIDAR_USEPOLLING=true
+    #     build:
+    #       dockerfile: Dockerfile
+    #       context: ./ui
+    #     ports:
+    #       - '3001:3000'
+    #     volumes:
+    #       - /app/node_modules
+    #       - ./ui:/app
+      
 
