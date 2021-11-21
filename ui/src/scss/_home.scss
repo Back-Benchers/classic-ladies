@@ -1,0 +1,309 @@
+%text-format {
+    padding: 5px;
+    letter-spacing: 1px;
+    word-spacing: 2px;
+}
+
+.landing-box {
+    @include flexCenter(row, space-evenly);
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto 20px auto;
+    div {
+        @include flexCenter(column, center);
+        max-width: 600px;
+        padding: 0 10px 0 10px;
+        text-align: center;
+        margin-bottom: 20px;
+        h1 {
+            @extend %text-format;
+            font-size: 32px;
+            @include mobile-400 {
+                font-size: 20px;
+            }
+        }
+        p {
+            @extend %text-format;
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: $primary-color;
+            @include mobile-400 {
+                font-size: 16px;
+            }
+        }
+        a {
+            @include bordered(2px, $primary-color);
+            color: $primary-color;
+            padding: 10px 20px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 20px;
+            transition: all 0.7s;
+            @include mobile-400 {
+                font-size: 16px;
+                padding: 8px 16px;
+            }
+            &:hover {
+                @include colour($primary-color, $secondary-color);
+            }
+        }
+    }
+    img {
+        width: 480px;
+        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+        background-color: #adc5d8;
+        margin-right: 10px;
+        @include mobile-500 {
+            width: 380px;
+        }
+        @include mobile-400 {
+            width: 300px;
+        }
+        @include mobile-300 {
+            width: 260px;
+        }
+    }
+}
+
+.features {
+    @include flexCenter(row, space-evenly);
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    #{&}-card {
+        @include bordered(2px, $primary-color);
+        width: 250px;
+        margin: 10px;
+        padding: 10px;
+        background-color: #c8d8e4;
+        transition: box-shadow 0.3s;
+        border-radius: 10px;
+        cursor: pointer;
+        &:hover {
+            box-shadow: 0 2px 6px $primary-color;
+        }
+    }
+    #{&}-head {
+        @include flexCenter(row, center);
+        font-size: 20px;
+        margin-bottom: 10px;
+        text-align: center;
+        color: $primary-color;
+        font-weight: 500;
+    }
+    #{&}-para {
+        text-align: center;
+    }
+}
+
+// carousal
+$slide-count: 5;
+$slide-width: 30rem;
+*,
+*:before,
+*:after {
+    -webkit-box-sizing: border-box;
+    box-sizing: inherit;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.carousel__wrap {
+    margin-top: 10%;
+    align-items: center;
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    position: relative;
+    width: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.carousel__inner {
+    height: 30rem;
+    position: relative;
+    width: calc(#{$slide-width * 3});
+}
+
+.carousel__container {
+    height: 80%;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+.carousel__slide-list {
+    height: 100%;
+    left: 50%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    transform: translateX(-50%);
+    width: calc(#{($slide-count + 0.5) * $slide-width * 2});
+}
+
+.carousel__slide-item {
+    display: inline-block;
+    height: $slide-width;
+    margin: 0;
+    padding: 1rem;
+    position: absolute;
+    transition: all 0.3s;
+    width: $slide-width;
+}
+
+.carousel__slide-item-img-link {
+    cursor: zoom-in;
+    display: flex;
+    height: 80%;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    img {
+        height: 100%;
+        object-fit: cover;
+        transition: all 0.5s ease;
+        width: 100%;
+    }
+    &::after {
+        align-items: center;
+        background: rgba(black, 0.5);
+        color: white;
+        content: 'read more';
+        display: flex;
+        height: 100%;
+        justify-content: center;
+        opacity: 0;
+        position: absolute;
+        transition: all 0.5s ease;
+        width: 100%;
+    }
+    &:hover {
+        &::after {
+            opacity: 1;
+        }
+        img {
+            transform: scale(1.3);
+        }
+    }
+}
+
+.carousel-slide-item__body {
+    bottom: -2.5rem;
+    height: 10%;
+    position: absolute;
+    h4 {
+        margin: 0.7rem 0 0;
+        text-transform: uppercase;
+    }
+    p {
+        font-size: 1.2rem;
+        line-height: 1.3;
+        margin: 0.7rem 0 0;
+    }
+}
+
+.carousel__btn {
+    align-items: center;
+    background: 0;
+    border: 0;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    &--prev {
+        left: -10%;
+    }
+    &--next {
+        right: -10%;
+    }
+}
+
+.carousel__btn-arrow {
+    border: solid black;
+    border-width: 0 0.4rem 0.4rem 0;
+    height: 2rem;
+    padding: 3px;
+    width: 2rem;
+    z-index: 10;
+    &--left {
+        transform: rotate(135deg);
+    }
+    &--right {
+        transform: rotate(-45deg);
+    }
+}
+
+.carousel__dots {
+    display: inline-block;
+    left: 50%;
+    margin-top: 2rem;
+    position: absolute;
+    transform: translateX(-50%);
+    .dot {
+        background: #ccc;
+        border: 0;
+        border-radius: 50%;
+        cursor: pointer;
+        height: 2rem;
+        margin: 0 0.3rem;
+        outline: none;
+        transform: scale(0.5);
+        width: 2rem;
+        &.active {
+            background: black;
+        }
+    }
+}
+
+
+/* Slideshow */
+
+.slideshow {
+    margin: 0 auto;
+    overflow: hidden;
+    max-width: 500px;
+}
+
+.slideshowSlider {
+    white-space: nowrap;
+    transition: ease 1000ms;
+}
+
+.slide {
+    display: inline-block;
+    height: 400px;
+    width: 100%;
+    border-radius: 40px;
+}
+
+
+/* Buttons */
+
+.slideshowDots {
+    text-align: center;
+}
+
+.slideshowDot {
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin: 15px 7px 0px;
+    background-color: #c4c4c4;
+}
+
+.slideshowDot.active {
+    background-color: #6a0dad;
+}
