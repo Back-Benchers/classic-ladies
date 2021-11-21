@@ -8,3 +8,14 @@ Commands:
     5. npm run pg:connect -> connect postgres
     6. npm run dev:app -> run only backend
     7. npm run dev:ui -> run only ui
+
+nginx setup:
+
+server {
+       listen       80;
+       server_name  classicladies.com;
+
+       location / {
+           proxy_pass http://127.0.0.1:5000;
+       }
+    }

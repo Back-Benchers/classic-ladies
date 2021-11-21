@@ -13,7 +13,6 @@ import table from './database/table';
 dotenv.config();
 
 const app = express();
-const __dirname = path.resolve();
 
 app.use(helmet({
     contentSecurityPolicy: {
@@ -42,22 +41,10 @@ function errorHandler(err, req, res, next) {
 }
 
 
-
-// if (process.env.NODE_ENV === "production" || process.env.NODE_ENV === "docker") {
-//     // Set static folder
-//     process.env.PWD = process.cwd();
-//     app.use(express.static(process.env.PWD, "adminui", "build"));
-//     app.get('/', function(req, res) {
-//         res.sendFile(process.env.PWD, "adminui", "build", "index.html");
-//     });
-// } else {
-//     app.use(express.static(path.join(__dirname, "adminui", "build")));
-//     app.get('/', function(req, res) {
-//         res.sendFile(path.join(__dirname, "adminui", "build", "index.html"));
-//     });
-// }
+// app.use(express.static(path.resolve('./ui/build')));
 
 app.get("/", (req, res) => {
+    // res.sendFile(path.resolve('./ui', 'build', 'index.html'));
     res.send("hello");
 })
 
@@ -70,6 +57,6 @@ const server = app.listen(process.env.PORT, function() {
     let host = server.address().address;
     let port = server.address().port;
     winston.info("app listening at http://localhost:" + port);
-    // table.sequelize.sync({ alter: true });
-    // winston.info("db conn esablished");
+    table.sequelize.sync({ alter: true });
+    winston.info("db conn esablished");
 });

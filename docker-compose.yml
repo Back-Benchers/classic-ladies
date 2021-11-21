@@ -1,21 +1,21 @@
 version: '3.7'
 services:
-    postgres:
-        image: postgres:10-alpine
-        restart: always
-        environment:
-          - DEBUG=true
-          - POSTGRES_DB=app
-          - POSTGRES_USER=postgres
-          - POSTGRES_PASSWORD=postgres
-        logging:
-          options:
-            max-size: 10m
-            max-file: "3"
-        ports:
-          - '5432:5432'
-        volumes: 
-          - ./postgres:/var/lib/postgresql/data
+    # postgres:
+    #     image: postgres:10-alpine
+    #     restart: always
+    #     environment:
+    #       - DEBUG=true
+    #       - POSTGRES_DB=app
+    #       - POSTGRES_USER=postgres
+    #       - POSTGRES_PASSWORD=postgres
+    #     logging:
+    #       options:
+    #         max-size: 10m
+    #         max-file: "3"
+    #     ports:
+    #       - '5432:5432'
+    #     volumes: 
+    #       - ./postgres:/var/lib/postgresql/data
 
     app:
         container_name: app
@@ -23,24 +23,13 @@ services:
         build:
           context: .
           dockerfile: Dockerfile
-        depends_on:
-          - "postgres"
+        # depends_on:
+        #   - "postgres"
         ports:
           - '5000:5000'
         volumes: 
           - /app/node_modules
           - ./:/app
-
-    # adminui:
-    #     build: 
-    #       dockerfile: Dockerfile
-    #       context: ./adminui
-    #     ports:
-    #       - '3001:80'
-    #     depends_on:
-    #       - "app"  
-    #     links:
-    #       - app
 
     adminui:
         container_name: adminui
