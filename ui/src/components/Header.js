@@ -42,7 +42,7 @@ export default function Header(props) {
 
             <ul style={styles.styleMenu}>
                 <li><Link to="/">Home</Link></li>
-                <li><Link to="/products">Products</Link></li>
+                <li><Link to="/products">New Products</Link></li>
                 <li><Link to="/register">Login/Register</Link></li>
                 <li onClick={toggleMenu}>
                     <img src="cross.png" alt="close-menu" width="30" className="menu" />
