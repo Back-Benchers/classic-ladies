@@ -35,7 +35,7 @@ export default function Home(props) {
 
                 <img src="bg.png" alt="landing-pic" />
             </div>
-
+            <Carousel />
             <div className="products">
                 {
                     products.filter(product => {
@@ -63,7 +63,6 @@ export default function Home(props) {
                     ))
                 }
             </div>
-            <Carousel />
             <Slideshow />
             <div className="features">
                 <div className="features-card">
