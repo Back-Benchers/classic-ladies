@@ -3,7 +3,6 @@ import helmet from 'helmet';
 import winston from 'winston';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
-import path from 'path';
 
 import log from "./logger/logger";
 import apiClient from './api/apiClientRouter';
@@ -40,11 +39,7 @@ function errorHandler(err, req, res, next) {
     });
 }
 
-
-// app.use(express.static(path.resolve('./ui/build')));
-
 app.get("/", (req, res) => {
-    // res.sendFile(path.resolve('./ui', 'build', 'index.html'));
     res.send("hello");
 })
 

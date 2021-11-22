@@ -4,13 +4,14 @@
     "description": "Web App Project (ReactJS)",
     "main": "src/app/index.js",
     "scripts": {
-        "dev": "concurrently \"npm run dev:ui\" \"npm run dev:app\"",
+        "dev": "concurrently  \"npm run dev:ui\" \"npm run dev:adminui\"",
         "dev:app": "nodemon --es-module-specifier-resolution=node app/index.js",
-        "dev:ui": "npm run --prefix ui watch",
-        "dev:create": "docker compose up -d",
-        "dev:start": "docker compose start",
-        "dev:stop": "docker compose stop",
-        "dev:clean": "docker compose down",
+        "dev:ui": "npm run --prefix ui dev",
+        "dev:adminui": "npm run --prefix adminui dev",
+        "app:create": "docker compose up -d",
+        "app:start": "docker compose start",
+        "app:stop": "docker compose stop",
+        "app:clean": "docker compose down -v",
         "pg:connect": "docker exec -it classic-ladies_postgres_1 psql -U postgres"
     },
     "repository": {
