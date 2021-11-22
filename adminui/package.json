@@ -22,7 +22,7 @@
     "scripts": {
         "start": "react-scripts --openssl-legacy-provider start",
         "dev": "PORT=5002 react-scripts start",
-        "build": "react-scripts build",
+        "build": "react-scripts --openssl-legacy-provider build",
         "watch": "npm-watch",
         "test": "react-scripts test",
         "serve": "PORT=5002 serve -s build",
