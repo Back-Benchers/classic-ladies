@@ -1,7 +1,7 @@
 header {
     @include flexCenter(row, space-around);
     flex-wrap: wrap;
-    height: 9vh;
+    height: 10vh;
     width: 100vw;
     background-color: $ternary-color;
     padding: 0.4rem;

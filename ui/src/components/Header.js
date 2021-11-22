@@ -41,7 +41,7 @@ export default function Header(props) {
             </form>
 
             <ul style={styles.styleMenu}>
-                <li><Link to="/products">New Products</Link></li>
+                <li><Link to="/products">Categories</Link></li>
                 <li><Link to="/register">Login/Register</Link></li>
                 <li onClick={toggleMenu}>
                     <img src="./cross.png" alt="close-menu" className="menu" />

@@ -3,37 +3,37 @@ import React, { useState, useEffect } from 'react';
 
 const slideWidth = 30;
 
-const _items = [
+const categories = [
     {
-        player: {
-            title: '',
+        category: {
+            title: 'USPA T-Shirt',
             desc: '',
             image: 'https://i.postimg.cc/RhYnBf5m/er-slider.jpg',
         },
     },
     {
-        player: {
+        category: {
             title: "Ronnie O'Sullivan",
             desc: "",
             image: 'https://i.postimg.cc/qBGQNc37/ro-slider.jpg',
         },
     },
     {
-        player: {
+        category: {
             title: 'Shane Van Boening',
             desc: '',
             image: 'https://i.postimg.cc/cHdMJQKG/svb-slider.jpg',
         },
     },
     {
-        player: {
+        category: {
             title: 'Mike Sigel',
             desc: '',
             image: 'https://i.postimg.cc/C12h7nZn/ms-1.jpg',
         },
     },
     {
-        player: {
+        category: {
             title: 'Willie Mosconi',
             desc: '',
             image: 'https://i.postimg.cc/NfzMDVHP/willie-mosconi-slider.jpg',
@@ -41,8 +41,8 @@ const _items = [
     },
 ];
 
-const length = _items.length;
-_items.push(..._items);
+const length = categories.length;
+categories.push(...categories);
 
 const sleep = (ms = 0) => {
     return new Promise((resolve) => setTimeout(resolve, ms));
@@ -53,7 +53,7 @@ const createItem = (position, idx) => {
         styles: {
             transform: `translateX(${position * slideWidth}rem)`,
         },
-        player: _items[idx].player,
+        category: categories[idx].category,
     };
 
     switch (position) {
@@ -77,17 +77,17 @@ const CarouselSlideItem = ({pos, idx, activeIdx}) => {
     return (
         <li className="carousel__slide-item" style={item.styles}>
             <div className="carousel__slide-item-img-link">
-                <img src={item.player.image} alt={item.player.title} />
+                <img src={item.category.image} alt={item.category.title} />
             </div>
             <div className="carousel-slide-item__body">
-                <h4>{item.player.title}</h4>
-                <p>{item.player.desc}</p>
+                <h4>{item.category.title}</h4>
+                {/* <p>{item.category.desc}</p> */}
             </div>
         </li>
     );
 };
 
-const keys = Array.from(Array(_items.length).keys());
+const keys = Array.from(Array(categories.length).keys());
 
 export const Carousel = () => {
     const [items, setItems] = useState(keys);
@@ -162,5 +162,3 @@ export const Carousel = () => {
         </div>
     );
 };
-
-
