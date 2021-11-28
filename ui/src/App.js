@@ -16,27 +16,27 @@ function App() {
 
   return (
     <DataProvider>
-      <>
-        <Switch>
-          {/* <Route exact path="/error404" component={Error} /> */}
-          <Route>
+      {/* <> */}
+      <Switch>
+        {/* <Route exact path="/error404" component={Error} /> */}
+        <Route>
 
-            <Header setSearch={setSearch} />
-            <Switch>
-              <Route exact path="/" component={() => <Home search={search} />} />
-              <Route exact path="/products" component={() => <Products search={search} />} />
-              <Route exact path="/products/:id" component={Details} />
-              <Route exact path="/cart" component={Cart} />
-              <Route exact path="/register" component={Register} />
-              <Route path='*' component={Error} />
-              {/* <Redirect to="/error404" /> */}
-              <Products />
-            </Switch>
-            <Footer />
-            
-          </Route>
-        </Switch>
-      </>
+          <Header setSearch={setSearch} />
+          <Switch>
+            <Route exact path="/" component={() => <Home search={search} />} />
+            <Route exact path="/products" component={() => <Products search={search} />} />
+            <Route exact path="/products/:id" component={Details} />
+            <Route exact path="/cart" component={Cart} />
+            <Route exact path="/register" component={Register} />
+            <Route path='*' component={Error} />
+            {/* <Redirect to="/error404" /> */}
+            <Products />
+          </Switch>
+          <Footer />
+
+        </Route>
+      </Switch>
+      {/* </> */}
     </DataProvider>
   );
 }

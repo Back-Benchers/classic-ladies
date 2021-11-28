@@ -1,5 +1,6 @@
 .app {
   color: var(--txt-color);
+  /* color: var(--txt-color); */
 }
 
 .app__content {
