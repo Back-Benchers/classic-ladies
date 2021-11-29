@@ -44,6 +44,7 @@ const Customers = () => {
                                 renderHead={(item, index) => renderHead(item, index)}
                                 bodyData={customerList}
                                 renderBody={(item, index) => renderBody(item, index)}
+                                page="Customers"
                             />
                         </div>
                     </div>

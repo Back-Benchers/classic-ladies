@@ -1,10 +1,12 @@
 import React, {useState} from 'react'
+import _ from 'underscore';
 
 import './table.css'
 
 const Table = props => {
+    let [sortCustomerList, setSortCustomerList] = useState(props.bodyData);
 
-    const initDataShow = props.limit && props.bodyData ? props.bodyData.slice(0, Number(props.limit)) : props.bodyData
+    let [initDataShow,setInitDataShow] =  useState( props.limit && sortCustomerList ? sortCustomerList.slice(0, Number(props.limit)) : sortCustomerList);
 
     const [dataShow, setDataShow] = useState(initDataShow)
 
@@ -13,8 +15,8 @@ const Table = props => {
     let range = []
 
     if (props.limit !== undefined) {
-        let page = Math.floor(props.bodyData.length / Number(props.limit))
-        pages = props.bodyData.length % Number(props.limit) === 0 ? page : page + 1
+        let page = Math.floor(sortCustomerList.length / Number(props.limit))
+        pages = sortCustomerList.length % Number(props.limit) === 0 ? page : page + 1
         range = [...Array(pages).keys()]
     }
 
@@ -24,14 +26,28 @@ const Table = props => {
         const start = Number(props.limit) * page
         const end = start + Number(props.limit)
 
-        setDataShow(props.bodyData.slice(start, end))
+        setDataShow(sortCustomerList.slice(start, end))
 
         setCurrPage(page)
+    }
+    const sortCustomerListByName = () => {
+        console.log('sortCustomerListByName');
+        sortCustomerList = _.sortBy(sortCustomerList, 'name');
+        setSortCustomerList([...sortCustomerList])
+        initDataShow=props.limit && sortCustomerList ? sortCustomerList.slice(0, Number(props.limit)) : sortCustomerList
+        setInitDataShow([...initDataShow]);
+        setDataShow(initDataShow);
+        // console.log(sortedCustomerList);
+
+
     }
 
     return (
         <div>
             <div className="table-wrapper">
+                {props.page ==='Customers'?<h2 className="page-header">
+                    <button onClick={sortCustomerListByName}>Sort by name</button>
+                </h2>:null}
                 <table>
                     {
                         props.headData && props.renderHead ? (
@@ -45,7 +61,7 @@ const Table = props => {
                         ) : null
                     }
                     {
-                        props.bodyData && props.renderBody ? (
+                        sortCustomerList && props.renderBody ? (
                             <tbody>
                                 {
                                     dataShow.map((item, index) => props.renderBody(item, index))

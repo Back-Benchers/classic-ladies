@@ -212,6 +212,7 @@ const Dashboard = () => {
                 renderHead={(item, index) => renderCusomerHead(item, index)}
                 bodyData={topCustomers.body}
                 renderBody={(item, index) => renderCusomerBody(item, index)}
+                page="Dashboard"
               />
             </div>
             <div className="card__footer">
@@ -230,6 +231,7 @@ const Dashboard = () => {
                 renderHead={(item, index) => renderOrderHead(item, index)}
                 bodyData={latestOrders.body}
                 renderBody={(item, index) => renderOrderBody(item, index)}
+                page="Dashboard"
               />
             </div>
             <div className="card__footer">
