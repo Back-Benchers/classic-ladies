@@ -4,7 +4,6 @@ import Sidebar from './components/sidebar/Sidebar';
 import TopNav from './components/topnav/TopNav';
 import Routes from './components/Routes';
 import { BrowserRouter, Route } from 'react-router-dom';
-// eslint-disable-next-line
 import { useSelector, useDispatch } from 'react-redux';
 import ThemeAction from './redux/actions/ThemeAction';
 const App = () => {
@@ -21,9 +20,7 @@ const App = () => {
     <BrowserRouter>
       <Route
         render={(props) => (
-          // <div className={`app theme-mode-dark theme-mode-red`}>
-          // <div className={`app`}>
-          <div className={`app ${themeReducer.mode} ${themeReducer.color}`}>
+         <div className={`app ${themeReducer.mode} ${themeReducer.color}`}>
             <Sidebar {...props} />
             <div className="app__content">
               <TopNav />
