@@ -12,8 +12,8 @@ export default function Products(props) {
         <section>
             <div className="products">
                 {
-                    products.filter(product => {
-                        if (product.title.toLowerCase().includes(props.search.toLowerCase())) {
+                    products?.filter(product => {
+                        if (product?.title?.toLowerCase().includes(props.search.toLowerCase())) {
                             return product;
                         }
                         else {

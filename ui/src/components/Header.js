@@ -22,7 +22,7 @@ export default function Header(props) {
 
         styleMenu: {
             right: menu ? 0 : "-100%",
-            backgroundColor: "#fd7e14"
+            backgroundColor: "whitesmoke"
         }
     };
 

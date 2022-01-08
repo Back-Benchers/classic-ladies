@@ -8,6 +8,7 @@ import CancelIcon from '@material-ui/icons/Cancel';
 import { Carousel } from './Carousel';
 import { Slideshow } from './Slider';
 import Banner from "./Banner/Banner"
+import Products from "./Products";
 
 export default function Home(props) {
 
@@ -18,7 +19,6 @@ export default function Home(props) {
             height: 30,
             marginRight: 3
         }
-
     };
 
     const value = useContext(DataContext);
