@@ -15,13 +15,11 @@ const createOne = (req, res) => {
 
     // Create a Product
     const product = {
-        title: req.body.title,
-        description: req.body.description,
-        trending: req.body.trending ? req.body.trending : false
-    };
+        url: "http://dummyimage.com/136x100.png/dddddd/000000"
+      };
 
     // Save Product in the database
-    Product.create(Product)
+    Product.create(product)
         .then(data => {
             res.send(data);
         })
