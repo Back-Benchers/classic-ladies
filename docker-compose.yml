@@ -17,7 +17,7 @@ services:
         volumes: 
           - ./postgres:/var/lib/postgresql/data
 
-    app:
+    # app:
         build:
           context: .
           dockerfile: Dockerfile
@@ -40,7 +40,7 @@ services:
     #     links:
     #       - app
 
-    adminui:
+    # adminui:
         stdin_open: true
         environment:
           - CHOKIDAR_USEPOLLING=true
