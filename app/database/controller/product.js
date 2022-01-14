@@ -15,15 +15,25 @@ const createOne = (req, res) => {
 
     // Create a Product
     const product = {
+        url: req.body.id,
+        brand: req.body.brand,
         title: req.body.title,
         description: req.body.description,
-        trending: req.body.trending ? req.body.trending : false
-    };
+        metadata: req.body.metadata,
+        trending: req.body.trending,
+        stockQuantity: req.body.stockQuantity,
+        soldQuantity: req.body.soldQuantity,
+        price: req.body.price,
+        salePrice: req.body.salePrice,
+        sizes: req.body.sizes,
+        categories: req.body.categories,
+        rating: req.body.rating
+      };
 
     // Save Product in the database
-    Product.create(Product)
+    Product.create(product)
         .then(data => {
-            res.send(data);
+            res.send("Insert Successful");
         })
         .catch(err => {
             res.status(500).send({

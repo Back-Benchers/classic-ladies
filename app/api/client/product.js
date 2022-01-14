@@ -1,3 +1,5 @@
+import product from "../../database/controller/product";
+
 class ProductsRoute {
     constructor(router) {
         this.router = router;
@@ -9,10 +11,19 @@ class ProductsRoute {
             '/v1/products',
             this.getProducts.bind(this)
         );
+        this.router.post(
+            '/v1/products',
+            this.insertProducts.bind(this)
+        );
     }
 
     getProducts(req, res, next) {
-        res.send('Hello prod:client');
+        res.send('Get prod:client');
+    }
+    
+    insertProducts(req, res, next) {
+        // res.send('Insert prod:client');
+        product.createOne(req, res);
     }
 }
 

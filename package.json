@@ -10,7 +10,7 @@
         "dev:start": "docker compose start",
         "dev:stop": "docker compose stop",
         "dev:clean": "docker compose down",
-        "pg:connect": "docker exec -it classic-ladies_postgres_1 psql -U postgres"
+        "pg:connect": "docker exec -it postgres_container psql -U postgres"
     },
     "repository": {
         "type": "git",
