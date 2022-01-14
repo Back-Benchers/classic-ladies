@@ -5,8 +5,10 @@ import ShippingIcon from '@material-ui/icons/LocalShipping';
 import SupportIcon from '@material-ui/icons/ContactSupport';
 import ReturnIcon from '@material-ui/icons/MonetizationOn';
 import CancelIcon from '@material-ui/icons/Cancel';
-import { Carousel } from './Carousal';
+import { Carousel } from './Carousel';
 import { Slideshow } from './Slider';
+import Banner from "./Banner/Banner"
+import Products from "./Products";
 
 export default function Home(props) {
 
@@ -17,7 +19,6 @@ export default function Home(props) {
             height: 30,
             marginRight: 3
         }
-
     };
 
     const value = useContext(DataContext);
@@ -35,7 +36,8 @@ export default function Home(props) {
 
                 <img src="bg.png" alt="landing-pic" />
             </div>
-
+            <Banner />
+            <Carousel />
             <div className="products">
                 {
                     products.filter(product => {
@@ -63,7 +65,6 @@ export default function Home(props) {
                     ))
                 }
             </div>
-            <Carousel />
             <Slideshow />
             <div className="features">
                 <div className="features-card">

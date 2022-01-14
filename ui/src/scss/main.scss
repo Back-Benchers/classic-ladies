@@ -7,3 +7,10 @@
 @import "./cart";
 @import "./register";
 @import "./error";
+
+html,
+body {
+  height: 100vh;
+  width: 100vw;
+  box-sizing: border-box;
+}

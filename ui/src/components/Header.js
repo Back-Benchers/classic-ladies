@@ -21,8 +21,8 @@ export default function Header(props) {
         },
 
         styleMenu: {
-            top: menu ? 0 : "-100%",
-            backgroundColor: "#ffffff"
+            right: menu ? 0 : "-100%",
+            backgroundColor: "whitesmoke"
         }
     };
 
@@ -31,21 +31,20 @@ export default function Header(props) {
     };
 
     return (
-        <header>
+        <header className="header">
             <div className="logo">
-                <h1><Link to="/">Classic Ladies</Link></h1>
+                {/* <h1><Link to="/">Classic Ladies</Link></h1> */}
+                <Link to="/"><img className="img-logo" src="./tcl.png" alt="The Classic Ladies" /></Link>
             </div>
-
             <form action="#" autoComplete="off">
                 <input type="text" id="input-search" name="search" placeholder="Search..." onChange={handleChange} />
             </form>
 
             <ul style={styles.styleMenu}>
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="/products">New Products</Link></li>
+                <li><Link to="/products">Categories</Link></li>
                 <li><Link to="/register">Login/Register</Link></li>
                 <li onClick={toggleMenu}>
-                    <img src="cross.png" alt="close-menu" width="30" className="menu" />
+                    <img src="./cross.png" alt="close-menu" className="menu" />
                 </li>
             </ul>
 
@@ -57,7 +56,7 @@ export default function Header(props) {
             </div>
 
             <div className="menu" onClick={toggleMenu}>
-                <img src="menu.svg" alt="menu" width="30" />
+                <img src="menu.svg" alt="menu" />
             </div>
 
         </header>

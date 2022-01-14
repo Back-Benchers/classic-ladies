@@ -3,8 +3,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import Chart from 'react-apexcharts';
-
-
 import StatusCard from '../components/status-card/StatusCard';
 
 import Table from '../components/table/Table';
@@ -212,6 +210,7 @@ const Dashboard = () => {
                 renderHead={(item, index) => renderCusomerHead(item, index)}
                 bodyData={topCustomers.body}
                 renderBody={(item, index) => renderCusomerBody(item, index)}
+                page="Dashboard"
               />
             </div>
             <div className="card__footer">
@@ -230,6 +229,7 @@ const Dashboard = () => {
                 renderHead={(item, index) => renderOrderHead(item, index)}
                 bodyData={latestOrders.body}
                 renderBody={(item, index) => renderOrderBody(item, index)}
+                page="Dashboard"
               />
             </div>
             <div className="card__footer">
