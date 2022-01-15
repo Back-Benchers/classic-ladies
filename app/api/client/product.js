@@ -1,3 +1,5 @@
+import product from "../../database/controller/product";
+
 class ProductsRoute {
     constructor(router) {
         this.router = router;
@@ -5,14 +7,26 @@ class ProductsRoute {
     }
 
     registerRoutes() {
-        this.router.get(
+      /*   this.router.get(
             '/v1/products',
             this.getProducts.bind(this)
         );
+        this.router.get(
+            '/v1/product/:id',
+            this.getProducts.bind(this)
+        ); */
+        this.router.post(
+            '/v1/products',
+            this.insertProducts.bind(this)
+        );
     }
 
-    getProducts(req, res, next) {
-        res.send('Hello prod:client');
+    /* getProducts(req, res, next) {
+        product.findAll(req,res)
+    } */
+    insertProducts(req, res, next) {
+        product.createOne(req,res);
+        
     }
 }
 

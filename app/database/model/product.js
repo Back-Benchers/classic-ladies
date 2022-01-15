@@ -4,63 +4,64 @@ const productModel = (sequelize) => {
     const product = sequelize.define("product", {
         id: {
             type: Sequelize.UUID,
-            allowNull: true,
+            defaultValue: Sequelize.UUIDV4,
+            allowNull: false,
             primaryKey: true
         },
         url: {
             type: Sequelize.STRING,
-            allowNull: false
+            allowNull: true
         },
         brand: {
             type: Sequelize.STRING,
-            allowNull: false
+            allowNull: true
         },
         title: {
             type: Sequelize.STRING,
-            allowNull: false
+            allowNull: true
         },
         description: {
             type: Sequelize.STRING,
-            allowNull: false
+            allowNull: true
         },
         metadata: {
             type: Sequelize.STRING,
-            allowNull: false
+            allowNull: true
         },
         // manufractureDetail: {
         //     type: Sequelize.STRING,
-        //     allowNull: false
+        //     allowNull: true
         // },
         trending: {
             type: Sequelize.BOOLEAN
         },
         stockQuantity: {
             type: Sequelize.INTEGER,
-            allowNull: false,
+            allowNull: true,
         },
         soldQuantity: {
             type: Sequelize.INTEGER,
-            allowNull: false,
+            allowNull: true,
         },
         price: {
             type: Sequelize.DOUBLE,
-            allowNull: false,
+            allowNull: true,
         },
         salePrice: {
             type: Sequelize.DOUBLE,
-            allowNull: false,
+            allowNull: true,
         },
         sizes: {
             type: Sequelize.ARRAY(Sequelize.STRING),
-            allowNull: false,
+            allowNull: true,
         },
         categories: {
             type: Sequelize.ARRAY(Sequelize.STRING),
-            allowNull: false,
+            allowNull: true,
         },
         rating: {
             type: Sequelize.INTEGER,
-            allowNull: false,
+            allowNull: true,
         }
     });
 

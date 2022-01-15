@@ -8,3 +8,12 @@ Commands:
     5. npm run pg:connect -> connect postgres
     6. npm run dev:app -> run only backend
     7. npm run dev:ui -> run only ui
+---
+# Route
+ ## Common
+ 
+ |Sl No.| type|Path |Desc|
+ |---|---|---|---|
+ |1.|GET|/products| All Product|
+ |2.|GET|/products/:id| Product with ID |
+ |3.|GET|/products/:id| Product with ID |
