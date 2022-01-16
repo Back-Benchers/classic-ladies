@@ -24,7 +24,7 @@ export default function Home(props) {
     const value = useContext(DataContext);
     const [products] = value.products;
     const addCart = value.addCart;
-    console.log("products:",products);
+    // console.log("products:",products);
 
     return (
         <section>

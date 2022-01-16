@@ -28,8 +28,8 @@ function CategoryProducts() {
 
   return (
     <div>
-      {/* <Products search={type} /> */}
-      <section>
+      <Products search={type} />
+    {/*   <section>
         <div className="products">
           {products
             ?.filter((product) => {
@@ -57,7 +57,7 @@ function CategoryProducts() {
               </div>
             ))}
         </div>
-      </section>
+      </section> */}
     </div>
   );
 }

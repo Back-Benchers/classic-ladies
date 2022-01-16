@@ -6,6 +6,7 @@ export default function Products(props) {
 
     const value = useContext(DataContext);
     const [products] = value.products;
+    console.log(products);
     const addCart = value.addCart;
 
     return (
@@ -13,7 +14,7 @@ export default function Products(props) {
             <div className="products">
                 {
                     products?.filter(product => {
-                        if (product?.title?.toLowerCase().includes(props.search.toLowerCase())) {
+                        if (product?.categories?.toLowerCase().includes(props.search.toLowerCase())) {
                             return product;
                         }
                         else {
