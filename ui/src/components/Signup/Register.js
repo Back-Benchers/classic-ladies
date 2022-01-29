@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from "react-router-dom"
+import { Link, Redirect } from "react-router-dom"
 import useForm from "./useForm";
 import validate from "./Validation";
 import FormSuccess from "./FormSuccess";
@@ -10,7 +10,7 @@ export default function Register() {
 
     return (
         <section>
-            { (Object.keys(errors).length === 0 && isSubmitting) ? (<FormSuccess name={values.username} />) :
+            {(Object.keys(errors).length === 0 && isSubmitting) ? (<Redirect to="/" />) :
                 (<div className="form-container">
                     <h2>Login/Register</h2>
                     <form onSubmit={handleSubmit} autoComplete="off" noValidate>
@@ -28,12 +28,12 @@ export default function Register() {
 
                         <div className="form-input">
                             <label>Password <span className="tooltip"> &#9432;
-            	                <span className="tooltip-text">Password must have atleast: <br /><br />
-                                &#8226; 1 digit (0-9)<br />
-                                &#8226; 1 uppercase &amp; 1 lowercase alphabet<br />
-                                &#8226; 1 special character (!#$@^%&amp;?)<br />
-                                &#8226; 8 characters &amp; less than 20 characters</span>
-                                </span>
+                                <span className="tooltip-text">Password must have atleast: <br /><br />
+                                    &#8226; 1 digit (0-9)<br />
+                                    &#8226; 1 uppercase &amp; 1 lowercase alphabet<br />
+                                    &#8226; 1 special character (!#$@^%&amp;?)<br />
+                                    &#8226; 8 characters &amp; less than 20 characters</span>
+                            </span>
                             </label>
                             <input name="password" type="password" onChange={handleInput} value={values.password} />
                             {errors.password && <small className="form-error">{errors.password}</small>}
