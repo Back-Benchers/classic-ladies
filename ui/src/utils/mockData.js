@@ -1,7 +1,7 @@
 export const products = [
   {
     id: 1,
-    url: "http://dummyimage.com/136x100.png/dddddd/000000",
+    url: "https://back-benchers.netlify.app/image001.png",
     brand: "Globus",
     title: "Heroes for Sale",
     description: "Alteration of Left Shoulder Region, Percutaneous Approach",
