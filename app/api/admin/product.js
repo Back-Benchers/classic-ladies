@@ -8,11 +8,11 @@ class ProductsRoute {
     }
 
     registerRoutes() {
-        this.router.get(
+      /*   this.router.get(
             '/v1/products/:id',
             // security.checkUserScope.bind(this, security.scope.READ_PRODUCTS),
             this.getProducts.bind(this)
-        );
+        ); */
 
         this.router.post(
             '/v1/products',
@@ -39,9 +39,9 @@ class ProductsRoute {
         );
     }
 
-    getProducts(req, res, next) {
+ /*    getProducts(req, res, next) {
         product.findOne(req, res);
-    }
+    } */
 
     postProducts(req, res, next) {
         product.createOne(req, res);
