@@ -14,7 +14,7 @@ const categoryModel = (sequelize) => {
             type: Sequelize.STRING
         },
         url: {
-            type: Sequelize.STRING,
+            type: Sequelize.ARRAY(Sequelize.STRING),
             allowNull: false
         },
     });

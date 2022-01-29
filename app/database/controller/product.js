@@ -15,7 +15,7 @@ const createOne = (req, res) => {
 
     // Create a Product
     const product = {
-        url: req.body.id,
+        url: req.body.url,
         brand: req.body.brand,
         title: req.body.title,
         description: req.body.description,
