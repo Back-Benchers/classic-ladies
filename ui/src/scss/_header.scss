@@ -3,12 +3,11 @@ header {
     flex-wrap: wrap;
     height: 10vh;
     width: 100vw;
-    background-color: $ternary-color;
+    background-color: whitesmoke;
     padding: 0.4rem;
     position: sticky;
     top: 0;
     z-index: 9;
-    background-color: #fd7e14;
     @include mobile-500 {
         height: 8vh;
     }
@@ -25,8 +24,8 @@ header {
         width: 8rem;
         height: 6rem;
         @include mobile-500 {
-            width: 5rem;
-            height: 4rem;
+            width: 3rem;
+            height: 3rem;
         }
     }
     #input-search {
@@ -99,7 +98,7 @@ header {
             right: -3.2rem;
         }
         span {
-            @include colour(#fd7e14, $secondary-color);
+            @include colour(white, $text-color);
             border-radius: 50%;
             position: absolute;
             bottom: 25px;

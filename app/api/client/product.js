@@ -10,11 +10,7 @@ class ProductsRoute {
       /*   this.router.get(
             '/v1/products',
             this.getProducts.bind(this)
-        );
-        this.router.get(
-            '/v1/product/:id',
-            this.getProducts.bind(this)
-        ); */
+        );*/
         this.router.post(
             '/v1/products',
             this.insertProducts.bind(this)
@@ -25,8 +21,8 @@ class ProductsRoute {
         product.findAll(req,res)
     } */
     insertProducts(req, res, next) {
-        product.createOne(req,res);
-        
+//         product.createOne(req,res);
+      res.send("Not Allowed");
     }
 }
 

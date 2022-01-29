@@ -1,14 +1,13 @@
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState, useEffect } from "react";
+import { products } from "../utils/mockData";
 
 export const DataContext = createContext();
 
 export const DataProvider = (props) => {
+  const [product, setProduct] = useState([]);
 
-    const [products, setProducts] = useState([]);
-
-    const getData = () => {
-
-        fetch('data.json'
+  const getData = () => {
+    /* fetch('data.json'
             , {
                 headers: {
                     'Content-Type': 'application/json',
@@ -21,54 +20,50 @@ export const DataProvider = (props) => {
             })
             .then(function (myJson) {
                 setProducts(myJson)
-            });
+            }); */
+    setProduct(products);
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  const [cart, setCart] = useState([]);
+
+  const addCart = (id) => {
+    const check = cart.every((item) => {
+      return item.id !== id;
+    });
+
+    if (check) {
+      const data = product.filter((product) => {
+        return product.id === id;
+      });
+      setCart([...cart, ...data]);
+    } else {
+      alert("Product has been added to cart.");
     }
+  };
 
-    useEffect(() => {
-        getData()
-    }, [])
+  useEffect(() => {
+    const storageCart = JSON.parse(localStorage.getItem("storageCart"));
 
-    const [cart, setCart] = useState([]);
-
-    const addCart = (id) => {
-        const check = cart.every(item => {
-            return item.pid !== id;
-        })
-
-        if (check) {
-            const data = products.filter(product => {
-                return product.pid === id;
-            })
-            setCart([...cart, ...data]);
-        }
-        else {
-            alert("Product has been added to cart.");
-        }
+    if (storageCart) {
+      setCart(storageCart);
     }
+  }, []);
 
-    useEffect(() => {
+  useEffect(() => {
+    localStorage.setItem("storageCart", JSON.stringify(cart));
+  }, [cart]);
 
-        const storageCart = JSON.parse(localStorage.getItem("storageCart"));
+  const value = {
+    products: [product, setProduct],
+    cart: [cart, setCart],
+    addCart: addCart,
+  };
 
-        if (storageCart) {
-            setCart(storageCart);
-        }
-    }, [])
-
-    useEffect(() => {
-
-        localStorage.setItem("storageCart", JSON.stringify(cart));
-    }, [cart])
-
-    const value = {
-        products: [products, setProducts],
-        cart: [cart, setCart],
-        addCart: addCart
-    }
-
-    return (
-        <DataContext.Provider value={value}>
-            {props.children}
-        </DataContext.Provider>
-    )
-}
+  return (
+    <DataContext.Provider value={value}>{props.children}</DataContext.Provider>
+  );
+};

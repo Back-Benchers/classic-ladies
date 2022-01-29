@@ -8,6 +8,7 @@ import CancelIcon from '@material-ui/icons/Cancel';
 import { Carousel } from './Carousel';
 import { Slideshow } from './Slider';
 import Banner from "./Banner/Banner"
+import Products from "./Products";
 
 export default function Home(props) {
 
@@ -18,12 +19,12 @@ export default function Home(props) {
             height: 30,
             marginRight: 3
         }
-
     };
 
     const value = useContext(DataContext);
     const [products] = value.products;
     const addCart = value.addCart;
+    // console.log("products:",products);
 
     return (
         <section>
@@ -41,7 +42,7 @@ export default function Home(props) {
             <div className="products">
                 {
                     products.filter(product => {
-                        if (product.title.toLowerCase().includes(props.search.toLowerCase())) {
+                        if (product.trending) {
                             return product;
                         }
                         else {
@@ -49,17 +50,17 @@ export default function Home(props) {
                         }
 
                     }).map(product => (
-                        <div className="products-card" key={product.pid}>
-                            <Link to={`/products/${product.pid}`}>
-                                <img src={product.images[0]} alt="cover-pic" />
+                        <div className="products-card" key={product.id}>
+                            <Link to={`/products/${product.id}`}>
+                                <img src={product.url} alt="cover-pic" />
                             </Link>
                             <div className="products-content">
                                 <h3 title={product.title}>
-                                    <Link to={`/products/${product.pid}`}>{product.title}</Link>
+                                    <Link to={`/products/${product.id}`}>{product.title}</Link>
                                 </h3>
                                 <p className="products-desc">{product.description}</p>
-                                <p className="products-price">&#8377; {product.price}</p>
-                                <button onClick={() => addCart(product.pid)}>Add to Cart</button>
+                                <p className="products-price">&#8377; {product.salePrice}</p>
+                                <button onClick={() => addCart(product.id)}>Add to Cart</button>
                             </div>
                         </div>
                     ))

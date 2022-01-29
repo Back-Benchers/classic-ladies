@@ -60,7 +60,7 @@ const productModel = (sequelize) => {
             allowNull: true,
         },
         rating: {
-            type: Sequelize.INTEGER,
+            type: Sequelize.FLOAT,
             allowNull: true,
         }
     });

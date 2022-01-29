@@ -9,6 +9,7 @@ import Details from "./components/Details/Details";
 import Cart from "./components/Cart";
 import Register from "./components/Signup/Register";
 import Error from "./components/Error";
+import CategoryProducts from "./components/CategoryProducts";
 
 function App() {
 
@@ -16,6 +17,27 @@ function App() {
 
   return (
     <DataProvider>
+<<<<<<< HEAD
+      <>
+        <Switch>
+          {/* <Route exact path="/error404" component={Error} /> */}
+          <Route>
+            <Header setSearch={setSearch} />
+            <Switch>
+              <Route exact path="/products" component={() => <Products search={search} />} />
+              <Route exact path="/products/:id" component={Details} />
+              <Route exact path="/category/:type" component={() => <CategoryProducts />} />
+              <Route exact path="/cart" component={Cart} />
+              <Route exact path="/register" component={Register} />
+              <Route exact path="/" component={() => <Home search={search} />} />
+              <Route path='*' component={Error} />
+              {/* <Redirect to="/error404" /> */}
+            </Switch>
+            <Footer />
+          </Route>
+        </Switch>
+      </>
+=======
       {/* <> */}
       <Switch>
         {/* <Route exact path="/error404" component={Error} /> */}
@@ -37,6 +59,7 @@ function App() {
         </Route>
       </Switch>
       {/* </> */}
+>>>>>>> kumar
     </DataProvider>
   );
 }

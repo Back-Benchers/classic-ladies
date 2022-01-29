@@ -68,10 +68,10 @@ app.use("/common", apiCommon);
 app.use(notFound);
 app.use(errorHandler);
 
-const server = app.listen(process.env.PORT, function () {
-  let host = server.address().address;
-  let port = server.address().port;
-  winston.info("app listening at "  + port);
-  table.sequelize.sync({ alter: true });
-  winston.info("db conn esablished");
+const server = app.listen(process.env.PORT, function() {
+    let host = server.address().address;
+    let port = server.address().port;
+    winston.info("app listening at http://localhost:" + port);
+    table.sequelize.sync({ alter: true });
+    winston.info("db conn esablished");
 });
