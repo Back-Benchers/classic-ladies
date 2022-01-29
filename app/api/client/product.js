@@ -7,23 +7,22 @@ class ProductsRoute {
     }
 
     registerRoutes() {
-        this.router.get(
+      /*   this.router.get(
             '/v1/products',
             this.getProducts.bind(this)
-        );
+        );*/
         this.router.post(
             '/v1/products',
             this.insertProducts.bind(this)
         );
     }
 
-    getProducts(req, res, next) {
-        res.send('Get prod:client');
-    }
-    
+    /* getProducts(req, res, next) {
+        product.findAll(req,res)
+    } */
     insertProducts(req, res, next) {
-        // res.send('Insert prod:client');
-        product.createOne(req, res);
+//         product.createOne(req,res);
+      res.send("Not Allowed");
     }
 }
 
