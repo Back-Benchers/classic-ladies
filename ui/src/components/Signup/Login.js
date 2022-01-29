@@ -4,7 +4,7 @@ import useForm from "./useForm";
 import validate from "./Validation";
 import FormSuccess from "./FormSuccess";
 
-export default function Register() {
+export default function Login() {
 
     const { handleInput, handleSubmit, values, errors, isSubmitting } = useForm(validate);
 
@@ -12,14 +12,8 @@ export default function Register() {
         <section>
             { (Object.keys(errors).length === 0 && isSubmitting) ? (<FormSuccess name={values.username} />) :
                 (<div className="form-container">
-                    <h2>Login/Register</h2>
+                    <h2>Login</h2>
                     <form onSubmit={handleSubmit} autoComplete="off" noValidate>
-                        <div className="form-input">
-                            <label>Name</label>
-                            <input name="username" type="text" onChange={handleInput} value={values.username} />
-                            {errors.username && <small className="form-error">{errors.username}</small>}
-                        </div>
-
                         <div className="form-input">
                             <label>Email</label>
                             <input name="email" type="text" onChange={handleInput} value={values.email} />
@@ -41,7 +35,7 @@ export default function Register() {
 
                         <button type="submit" className="form-btn">Submit</button><br />
                         <small>
-                            Already have an account? <Link to='/login'>Login here</Link>
+                            Don't have an account? <Link to='/register'>Signup here</Link>
                         </small>
                     </form>
                 </div>)}

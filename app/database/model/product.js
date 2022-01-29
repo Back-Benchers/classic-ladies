@@ -9,7 +9,7 @@ const productModel = (sequelize) => {
             primaryKey: true
         },
         url: {
-            type: Sequelize.ARRAY(Sequelize.STRING),
+            type: Sequelize.ARRAY(Sequelize.TEXT),
             allowNull: true
         },
         brand: {
