@@ -39,7 +39,7 @@ export default function Cart() {
 
     const increaseProduct = id => {
         cart.forEach(item => {
-            if (item.pid === id) {
+            if (item.id === id) {
                 item.count += 1;
             }
         })
@@ -48,7 +48,7 @@ export default function Cart() {
 
     const decreaseProduct = id => {
         cart.forEach(item => {
-            if (item.pid === id) {
+            if (item.id === id) {
                 item.count === 1 ? item.count = 1 : item.count -= 1;
             }
         })
@@ -58,7 +58,7 @@ export default function Cart() {
     const removeProduct = id => {
         if (window.confirm("Are you sure to remove this product ?")) {
             cart.forEach((item, index) => {
-                if (item.pid === id) {
+                if (item.id === id) {
                     cart.splice(index, 1)
                     item.count = 1;
                 }
@@ -76,20 +76,20 @@ export default function Cart() {
                 <div className="cart-box">
                     {
                         cart.map(product => (
-                            <div className="card" key={product.pid}>
-                                <div className="card-img" style={{ backgroundImage: `url(${product.images[0]})` }} />
+                            <div className="card" key={product.id}>
+                                <div className="card-img" style={{ backgroundImage: `url(${product.url})` }} />
 
                                 <div className="card-content">
                                     <p title={product.title}>{product.title}</p>
                                     <h3>&#8377; {product.price}</h3>
 
                                     <div className="amount">
-                                        <button className="count" onClick={() => decreaseProduct(product.pid)}> - </button>
+                                        <button className="count" onClick={() => decreaseProduct(product.id)}> - </button>
                                         <span>{product.count}</span>
-                                        <button className="count" onClick={() => increaseProduct(product.pid)}> + </button>
+                                        <button className="count" onClick={() => increaseProduct(product.id)}> + </button>
                                     </div>
 
-                                    <button className="delete" onClick={() => removeProduct(product.pid)}>Remove</button>
+                                    <button className="delete" onClick={() => removeProduct(product.id)}>Remove</button>
                                 </div>
                             </div>
                         ))

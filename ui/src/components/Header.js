@@ -8,6 +8,11 @@ export default function Header(props) {
     const [menu, setMenu] = useState(false);
     const value = useContext(DataContext);
     const [cart] = value.cart;
+    const user = value.user[0];
+    const setNewUser = value.setNewUser;
+
+    console.log(user);
+
 
     const toggleMenu = () => {
         setMenu(!menu);
@@ -30,10 +35,14 @@ export default function Header(props) {
         props.setSearch(event.target.value);
     };
 
+    const logout = () => {
+        localStorage.clear();
+        setNewUser({ uid: "", displayName: "", email: "", phoneNumber: "", photoURL: "" });
+    }
+
     return (
         <header className="header">
             <div className="logo">
-                {/* <h1><Link to="/">Classic Ladies</Link></h1> */}
                 <Link to="/"><img className="img-logo" src="./tcl.png" alt="The Classic Ladies" /></Link>
             </div>
             <form action="#" autoComplete="off">
@@ -42,7 +51,8 @@ export default function Header(props) {
 
             <ul style={styles.styleMenu}>
                 <li><Link to="/products">Categories</Link></li>
-                <li><Link to="/register">Login/Register</Link></li>
+                {user.displayName ? <li><Link to="/" onClick={logout}>{user.displayName}</Link></li> :
+                    <li><Link to="/register">Login/Register</Link></li>}
                 <li onClick={toggleMenu}>
                     <img src="./cross.png" alt="close-menu" className="menu" />
                 </li>

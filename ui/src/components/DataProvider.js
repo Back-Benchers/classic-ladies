@@ -5,6 +5,8 @@ export const DataContext = createContext();
 
 export const DataProvider = (props) => {
   const [product, setProduct] = useState([]);
+  const [cart, setCart] = useState([]);
+  const [user, setUser] = useState({ uid: "", displayName: "", email: "", phoneNumber: "", photoURL: "" });
 
   const getData = () => {
     /* fetch('data.json'
@@ -24,17 +26,11 @@ export const DataProvider = (props) => {
     setProduct(products);
   };
 
-  useEffect(() => {
-    getData();
-  }, []);
-
-  const [cart, setCart] = useState([]);
-
   const addCart = (id) => {
     const check = cart.every((item) => {
       return item.id !== id;
     });
-
+    console.log(check);
     if (check) {
       const data = product.filter((product) => {
         return product.id === id;
@@ -45,11 +41,25 @@ export const DataProvider = (props) => {
     }
   };
 
-  useEffect(() => {
-    const storageCart = JSON.parse(localStorage.getItem("storageCart"));
+  const setNewUser = (newUser) => {
+    setUser({
+      uid: newUser.uid, displayName: newUser.displayName, email: newUser.email, phoneNumber: newUser.phoneNumber,
+      photoURL: newUser.photoURL
+    });
+  };
 
+  useEffect(() => {
+    getData();
+
+    const storageCart = JSON.parse(localStorage.getItem("storageCart"));
     if (storageCart) {
       setCart(storageCart);
+    }
+
+    const loggedInUser = localStorage.getItem("user");
+    if (loggedInUser) {
+      const foundUser = JSON.parse(loggedInUser);
+      setUser(foundUser);
     }
   }, []);
 
@@ -61,6 +71,8 @@ export const DataProvider = (props) => {
     products: [product, setProduct],
     cart: [cart, setCart],
     addCart: addCart,
+    user: [user, setUser],
+    setNewUser: setNewUser
   };
 
   return (
