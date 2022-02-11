@@ -12,10 +12,10 @@ export default function Cart() {
     useEffect(() => {
 
         const getTotal = () => {
-
             let result = cart.reduce((prev, item) => {
-                return prev + (item.price * item.count)
-            }, 0)
+                return prev + (item.salePrice);
+                return item.price;
+            }, 0);
 
             setAllItemCost(result);
             let flag = false;
@@ -77,15 +77,15 @@ export default function Cart() {
                     {
                         cart.map(product => (
                             <div className="card" key={product.id}>
-                                <div className="card-img" style={{ backgroundImage: `url(${product.url})` }} />
+                                <div className="card-img" style={{ backgroundImage: `url(${product.url[0]})` }} />
 
                                 <div className="card-content">
                                     <p title={product.title}>{product.title}</p>
-                                    <h3>&#8377; {product.price}</h3>
+                                    <h3>&#8377; {product.salePrice}</h3>
 
                                     <div className="amount">
                                         <button className="count" onClick={() => decreaseProduct(product.id)}> - </button>
-                                        <span>{product.count}</span>
+                                        <span>{0}</span>
                                         <button className="count" onClick={() => increaseProduct(product.id)}> + </button>
                                     </div>
 
@@ -112,7 +112,7 @@ export default function Cart() {
                     </div>
 
                     <Link to="/cart" className="checkout-btn">Payment</Link>
-                    <small>*Free Delivery for orders above &#8377;1000 </small>
+                    <small><br />*Free Delivery for orders above &#8377;1000 </small>
                 </div>
 
             </div>

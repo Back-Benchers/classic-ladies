@@ -43,7 +43,7 @@ export default function Header(props) {
     return (
         <header className="header">
             <div className="logo">
-                <Link to="/"><img className="img-logo" src="./tcl.png" alt="The Classic Ladies" /></Link>
+                <Link to="/"><img className="img-logo" src="./tcl2.png" alt="The Classic Ladies" /></Link>
             </div>
             <form action="#" autoComplete="off">
                 <input type="text" id="input-search" name="search" placeholder="Search..." onChange={handleChange} />

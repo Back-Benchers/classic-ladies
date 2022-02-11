@@ -5,28 +5,35 @@
   margin: 0 auto 0 auto;
 
   #{&}-card {
-    @include spread(200px, 350px);
+    @include spread(160px, 260px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     overflow: hidden;
     background-color: white;
     box-shadow: 0 2px 6px #555;
-    padding: 15px;
-    margin: 15px;
+    padding: 0.4em;
+    margin: 0.8em;
 
     img {
       @include spread(100%, 100%);
-      max-height: 150px;
+      max-height: 120px;
       object-fit: contain;
     }
   }
 
   #{&}-content {
-    margin: 5px 0;
+    margin: 0 0;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: space-between;
 
-    h3 {
+    h4 {
       text-transform: uppercase;
       overflow: hidden;
-      white-space: nowrap;
+      white-space: pre-wrap;
       text-overflow: ellipsis;
 
       a {
@@ -51,7 +58,7 @@
   }
 
   #{&}-price {
-    font-size: 20px;
+    font-size: 1em;
     font-weight: bold;
     color: #c20d0d;
   }
@@ -61,11 +68,12 @@
     width: 100%;
     border: none;
     outline: none;
-    padding: 10px 0;
-    margin: 5px 0;
+    padding: 0.6em 0;
+    margin: 0 0;
     text-transform: uppercase;
     cursor: pointer;
-    letter-spacing: 1px;
+    letter-spacing: 0.1em;
+    font-size: 0.8em;
     font-weight: bold;
   }
 }

@@ -8,7 +8,8 @@ import CancelIcon from '@material-ui/icons/Cancel';
 import { Carousel } from './Carousel';
 import { Slideshow } from './Slider';
 import Banner from "./Banner/Banner"
-import Products from "./Products";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Home(props) {
 
@@ -52,13 +53,13 @@ export default function Home(props) {
                     }).map(product => (
                         <div className="products-card" key={product.id}>
                             <Link to={`/products/${product.id}`}>
-                                <img src={product.url} alt="cover-pic" />
+                                <img src={product.url[0]} alt="cover-pic" />
                             </Link>
                             <div className="products-content">
                                 <h3 title={product.title}>
                                     <Link to={`/products/${product.id}`}>{product.title}</Link>
                                 </h3>
-                                <p className="products-desc">{product.description}</p>
+                                {/* <p className="products-desc">{product.description.toString()}</p> */}
                                 <p className="products-price">&#8377; {product.salePrice}</p>
                                 <button onClick={() => addCart(product.id)}>Add to Cart</button>
                             </div>
@@ -89,6 +90,17 @@ export default function Home(props) {
                 </div>
 
             </div>
+            <ToastContainer
+                position="bottom-left"
+                autoClose={2500}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
         </section>
     )
 }

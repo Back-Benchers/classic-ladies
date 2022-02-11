@@ -1,11 +1,13 @@
 import React, { createContext, useState, useEffect } from "react";
 import { products } from "../utils/mockData";
+import { toast } from 'react-toastify';
 
 export const DataContext = createContext();
 
 export const DataProvider = (props) => {
   const [product, setProduct] = useState([]);
   const [cart, setCart] = useState([]);
+  const [cartProductCount, setCartProductCount] = useState([{}]);
   const [user, setUser] = useState({ uid: "", displayName: "", email: "", phoneNumber: "", photoURL: "" });
 
   const getData = () => {
@@ -35,7 +37,18 @@ export const DataProvider = (props) => {
       const data = product.filter((product) => {
         return product.id === id;
       });
+      console.log(data);
       setCart([...cart, ...data]);
+      toast.success(`${data[0].title} added to Cart!`, {
+        position: "bottom-left",
+        autoClose: 2500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      setCartProductCount([...cartProductCount, { productId: product.id, cartCount: 1 }]);
     } else {
       alert("Product has been added to cart.");
     }
@@ -72,7 +85,8 @@ export const DataProvider = (props) => {
     cart: [cart, setCart],
     addCart: addCart,
     user: [user, setUser],
-    setNewUser: setNewUser
+    setNewUser: setNewUser,
+    cartProductCount: [cartProductCount, setCartProductCount]
   };
 
   return (

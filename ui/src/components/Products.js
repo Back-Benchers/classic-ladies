@@ -24,13 +24,13 @@ export default function Products(props) {
                     }).map(product => (
                         <div className="products-card" key={product.id}>
                             <Link to={`/products/${product.id}`}>
-                                <img src={product.url} alt="cover-pic" />
+                                <img src={product.url[0]} alt="cover-pic" />
                             </Link>
                             <div className="products-content">
                                 <h3 title={product.title}>
                                     <Link to={`/products/${product.id}`}>{product.title}</Link>
                                 </h3>
-                                <p className="products-desc">{product.description}</p>
+                                {/* <p className="products-desc">{product.description.toString()}</p> */}
                                 <p className="products-price">&#8377; {product.salePrice}</p>
                                 <button onClick={() => addCart(product.id)}>Add to Cart</button>
                             </div>
