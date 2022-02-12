@@ -11,6 +11,7 @@ import Register from "./components/LoginSignup/Register";
 import Login from "./components/LoginSignup/Login";
 import Error from "./components/Error";
 import CategoryProducts from "./components/CategoryProducts";
+import UserProfile from "./components/UserProfile/UserProfile";
 
 function App() {
 
@@ -31,6 +32,7 @@ function App() {
             <Route exact path="/cart" component={Cart} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
+            <Route exact path="/profile" component={UserProfile} />
             <Route path='*' component={Error} />
             {/* <Redirect to="/error404" /> */}
             <Products />

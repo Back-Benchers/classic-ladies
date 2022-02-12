@@ -51,7 +51,7 @@ export default function Header(props) {
 
             <ul style={styles.styleMenu}>
                 <li><Link to="/products">Categories</Link></li>
-                {user.displayName ? <li><Link to="/" onClick={logout}>{user.displayName}</Link></li> :
+                {user.displayName ? <li><Link to="/profile">{user.displayName}</Link></li> :
                     <li><Link to="/register">Login/Register</Link></li>}
                 <li onClick={toggleMenu}>
                     <img src="./cross.png" alt="close-menu" className="menu" />

@@ -27,6 +27,16 @@ export default function Register() {
                         </div>
 
                         <div className="form-input">
+                            <label>Phone</label>
+                            <input name="phone" type="number" onChange={handleInput} value={values.phone} />
+                        </div>
+
+                        <div className="form-input">
+                            <label>Address</label>
+                            <textarea name="address" type="address" onChange={handleInput} value={values.address} />
+                        </div>
+
+                        <div className="form-input">
                             <label>Password <span className="tooltip"> &#9432;
                                 <span className="tooltip-text">Password must have atleast: <br /><br />
                                     &#8226; 1 digit (0-9)<br />

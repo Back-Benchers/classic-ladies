@@ -43,7 +43,7 @@ export default function Login() {
                     <form onSubmit={handleLogin} autoComplete="off" noValidate>
                         <div className="form-input">
                             <label>Email</label>
-                            <input name="email" type="text" onChange={handleInput} value={values.email} />
+                            <input name="email" type="email" onChange={handleInput} value={values.email} />
                             {errors.email && <small className="form-error">{errors.email}</small>}
                         </div>
 

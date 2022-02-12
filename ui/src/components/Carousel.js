@@ -8,84 +8,84 @@ const categories = [
     category: {
       title: "Top",
       desc: "",
-      image: "https://i.postimg.cc/NfzMDVHP/willie-mosconi-slider.jpg",
+      image: "https://back-benchers.netlify.app/product_imgs/img00015.png",
     },
   },
   {
     category: {
       title: "T-Shirt",
       desc: "",
-      image: "https://i.postimg.cc/NfzMDVHP/willie-mosconi-slider.jpg",
+      image: "https://back-benchers.netlify.app/product_imgs/img00053.png",
     },
   },
   {
     category: {
       title: "Two-Piece",
       desc: "",
-      image: "https://i.postimg.cc/NfzMDVHP/willie-mosconi-slider.jpg",
+      image: "https://back-benchers.netlify.app/product_imgs/img00029.png",
     },
   },
   {
     category: {
       title: "Sweatshirt Co-Ord Set",
       desc: "",
-      image: "https://i.postimg.cc/NfzMDVHP/willie-mosconi-slider.jpg",
+      image: "https://back-benchers.netlify.app/product_imgs/img00019.png",
     },
   },
   {
     category: {
       title: "Jacket",
       desc: "",
-      image: "https://i.postimg.cc/NfzMDVHP/willie-mosconi-slider.jpg",
+      image: "https://back-benchers.netlify.app/product_imgs/img00041.png",
     },
   },
   {
     category: {
       title: "Top n Joggers Set",
       desc: "",
-      image: "https://i.postimg.cc/NfzMDVHP/willie-mosconi-slider.jpg",
+      image: "https://back-benchers.netlify.app/product_imgs/img00023.png",
     },
   },
   {
     category: {
       title: "Joggers",
       desc: "",
-      image: "https://i.postimg.cc/NfzMDVHP/willie-mosconi-slider.jpg",
+      image: "https://back-benchers.netlify.app/product_imgs/img00047.png",
     },
   },
   {
     category: {
       title: "Zipper Co-Ord Set",
       desc: "",
-      image: "https://i.postimg.cc/NfzMDVHP/willie-mosconi-slider.jpg",
+      image: "https://back-benchers.netlify.app/product_imgs/img00031.png",
     },
   },
   {
     category: {
       title: "T-shirt n Joggers Set",
       desc: "",
-      image: "https://i.postimg.cc/NfzMDVHP/willie-mosconi-slider.jpg",
+      image: "https://back-benchers.netlify.app/product_imgs/img00033.png",
     },
   },
   {
     category: {
       title: "Track Pant",
       desc: "",
-      image: "https://i.postimg.cc/NfzMDVHP/willie-mosconi-slider.jpg",
+      image: "https://back-benchers.netlify.app/product_imgs/img00055.png",
     },
   },
   {
     category: {
       title: "Trousers",
       desc: "",
-      image: "https://i.postimg.cc/NfzMDVHP/willie-mosconi-slider.jpg",
+      image: "https://back-benchers.netlify.app/product_imgs/img00037.png",
     },
   },
   {
     category: {
       title: "Sweatshirt",
       desc: "",
-      image: "https://i.postimg.cc/NfzMDVHP/willie-mosconi-slider.jpg",
+      image: "https://back-benchers.netlify.app/product_imgs/img00065.png",
     },
   },
 ];
@@ -105,7 +105,6 @@ const createItem = (position, idx) => {
     category: categories[idx].category,
   };
 
-  console.log(position);
   switch (position) {
     case length - 1:
     case length + 1:
@@ -123,7 +122,6 @@ const createItem = (position, idx) => {
 
 const CarouselSlideItem = ({ pos, idx, activeIdx }) => {
   const item = createItem(pos, idx, activeIdx);
-  console.log(item);
   return (
     <Link to={`/category/${item.category.title}`}>
       <li className="carousel__slide-item" style={item.styles}>
@@ -140,7 +138,6 @@ const CarouselSlideItem = ({ pos, idx, activeIdx }) => {
 };
 
 const keys = Array.from(Array(categories.length).keys());
-console.log(keys);
 
 export const Carousel = () => {
   const [items, setItems] = useState(keys);

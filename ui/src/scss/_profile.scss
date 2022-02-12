@@ -1,0 +1,103 @@
+.user {
+  @include flexCenter(column, space-between);
+  max-width: 100vw;
+  max-height: 80vh;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  padding: 20px;
+
+  @include mobile-970 {
+    text-align: center;
+  }
+
+  @include mobile-500 {
+    height: 80vh;
+    .first-name,
+    .last-name {
+      width: 8em;
+    }
+
+    .address {
+      width: 16em;
+    }
+  }
+
+  &-img {
+    height: 8em;
+  }
+
+  label {
+    font-size: 1em;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  &-email,
+  &-contact-number {
+    height: 4em;
+    @include flexCenter(column, space-between);
+  }
+
+  &-address {
+    height: 8em;
+    @include flexCenter(column, space-around);
+  }
+
+  &-name {
+    height: 4em;
+    @include flexCenter(row, space-around);
+    column-gap: 1em;
+  }
+
+  &-name > input,
+  &-email > input,
+  &-contact-number > input,
+  &-address > textarea {
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3 ease-in-out;
+    padding: 3px 0px 3px 3px;
+    margin: 5px 1px 3px 0px;
+    border: 1px solid #dddddd;
+  }
+
+  &-name > input:focus,
+  &-email > input:focus,
+  &-contact-number > input:focus,
+  &-address > textarea:focus {
+    box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+    padding: 3px 0px 3px 3px;
+    margin: 5px 1px 3px 0px;
+    border: 1px solid rgba(81, 203, 238, 1);
+  }
+
+  .disable {
+    font-size: 1.2em;
+    outline: none;
+    border: none;
+    cursor: default;
+    caret-color: transparent;
+    user-select: none;
+    text-align: center;
+    resize: none;
+  }
+
+  input,
+  textarea {
+    font-size: 1.2em;
+    text-align: center;
+  }
+
+  &-save {
+    border: none;
+    outline: none;
+    margin: 2em 0;
+    padding: 0.8em 1em;
+    color: white;
+    font-size: 1em;
+    border-radius: 0.25em;
+    background-color: #1964fc;
+  }
+}

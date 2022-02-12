@@ -1,36 +1,37 @@
 footer {
-    @include flexCenter(column, space-evenly);
-    @include colour($ternary-color, $secondary-color);
-    height: 150px;
-    @include mobile-768 {
-        height: 200px;
+  @include flexCenter(column, space-evenly);
+  @include colour($ternary-color, $secondary-color);
+  height: 10vh;
+  background-color: whitesmoke;
+  @include mobile-768 {
+    height: 10vh;
+  }
+  @include mobile-400 {
+    height: 10vh;
+  }
+  .footer-links {
+    @include flexCenter(row, space-evenly);
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto 15px auto;
+    padding-top: 10px;
+    a {
+      padding: 10px 15px 10px 15px;
+      @include mobile-300 {
+        font-size: 15px;
+      }
     }
-    @include mobile-400 {
-        height: 250px;
+  }
+  .copyright {
+    @include flexCenter(row, center);
+    font-size: 14px;
+    width: 300px;
+    padding-bottom: 10px;
+    @include mobile-300 {
+      font-size: 13px;
     }
-    .footer-links {
-        @include flexCenter(row, space-evenly);
-        flex-wrap: wrap;
-        max-width: 1200px;
-        margin: 0 auto 15px auto;
-        padding-top: 10px;
-        a {
-            padding: 10px 15px 10px 15px;
-            @include mobile-300 {
-                font-size: 15px;
-            }
-        }
+    p {
+      margin-right: 10px;
     }
-    .copyright {
-        @include flexCenter(row, center);
-        font-size: 14px;
-        width: 300px;
-        padding-bottom: 10px;
-        @include mobile-300 {
-            font-size: 13px;
-        }
-        p {
-            margin-right: 10px;
-        }
-    }
+  }
 }

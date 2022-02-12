@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
 import { DataContext } from "./DataProvider";
 import { Link } from "react-router-dom";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Products(props) {
 
@@ -38,6 +40,17 @@ export default function Products(props) {
                     ))
                 }
             </div>
+            <ToastContainer
+                position="bottom-left"
+                autoClose={2500}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
         </section>
     )
 }

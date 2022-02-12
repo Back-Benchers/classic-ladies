@@ -8,7 +8,7 @@ export const DataProvider = (props) => {
   const [product, setProduct] = useState([]);
   const [cart, setCart] = useState([]);
   const [cartProductCount, setCartProductCount] = useState([]);
-  const [user, setUser] = useState({ uid: "", displayName: "", email: "", phoneNumber: "", photoURL: "" });
+  const [user, setUser] = useState({ uid: "", displayName: "", email: "", phoneNumber: "", address: "", photoURL: "" });
 
   const getData = () => {
     /* fetch('data.json'
@@ -57,7 +57,7 @@ export const DataProvider = (props) => {
   const setNewUser = (newUser) => {
     setUser({
       uid: newUser.uid, displayName: newUser.displayName, email: newUser.email, phoneNumber: newUser.phoneNumber,
-      photoURL: newUser.photoURL
+      address: newUser.address, photoURL: newUser.photoURL
     });
   };
 
