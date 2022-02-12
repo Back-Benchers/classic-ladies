@@ -7,7 +7,7 @@ export const DataContext = createContext();
 export const DataProvider = (props) => {
   const [product, setProduct] = useState([]);
   const [cart, setCart] = useState([]);
-  const [cartProductCount, setCartProductCount] = useState([{}]);
+  const [cartProductCount, setCartProductCount] = useState([]);
   const [user, setUser] = useState({ uid: "", displayName: "", email: "", phoneNumber: "", photoURL: "" });
 
   const getData = () => {
@@ -48,7 +48,7 @@ export const DataProvider = (props) => {
         draggable: true,
         progress: undefined,
       });
-      setCartProductCount([...cartProductCount, { productId: product.id, cartCount: 1 }]);
+      setCartProductCount([...cartProductCount, { productId: data[0].id, cartCount: 1 }]);
     } else {
       alert("Product has been added to cart.");
     }
@@ -65,8 +65,12 @@ export const DataProvider = (props) => {
     getData();
 
     const storageCart = JSON.parse(localStorage.getItem("storageCart"));
+    const cartStorageCount = JSON.parse(localStorage.getItem("cartStorageCount"));
     if (storageCart) {
       setCart(storageCart);
+    }
+    if (cartStorageCount) {
+      setCartProductCount(cartStorageCount);
     }
 
     const loggedInUser = localStorage.getItem("user");
@@ -78,6 +82,7 @@ export const DataProvider = (props) => {
 
   useEffect(() => {
     localStorage.setItem("storageCart", JSON.stringify(cart));
+    localStorage.setItem("cartStorageCount", JSON.stringify(cartProductCount));
   }, [cart]);
 
   const value = {

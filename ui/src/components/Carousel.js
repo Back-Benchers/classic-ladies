@@ -6,7 +6,7 @@ const slideWidth = 30;
 const categories = [
   {
     category: {
-      title: "Underwear",
+      title: "Top",
       desc: "",
       image: "https://i.postimg.cc/NfzMDVHP/willie-mosconi-slider.jpg",
     },
@@ -20,14 +20,14 @@ const categories = [
   },
   {
     category: {
-      title: "Shorts",
+      title: "Two-Piece",
       desc: "",
       image: "https://i.postimg.cc/NfzMDVHP/willie-mosconi-slider.jpg",
     },
   },
   {
     category: {
-      title: "Hoodie",
+      title: "Sweatshirt Co-Ord Set",
       desc: "",
       image: "https://i.postimg.cc/NfzMDVHP/willie-mosconi-slider.jpg",
     },
@@ -35,6 +35,55 @@ const categories = [
   {
     category: {
       title: "Jacket",
+      desc: "",
+      image: "https://i.postimg.cc/NfzMDVHP/willie-mosconi-slider.jpg",
+    },
+  },
+  {
+    category: {
+      title: "Top n Joggers Set",
+      desc: "",
+      image: "https://i.postimg.cc/NfzMDVHP/willie-mosconi-slider.jpg",
+    },
+  },
+  {
+    category: {
+      title: "Joggers",
+      desc: "",
+      image: "https://i.postimg.cc/NfzMDVHP/willie-mosconi-slider.jpg",
+    },
+  },
+  {
+    category: {
+      title: "Zipper Co-Ord Set",
+      desc: "",
+      image: "https://i.postimg.cc/NfzMDVHP/willie-mosconi-slider.jpg",
+    },
+  },
+  {
+    category: {
+      title: "T-shirt n Joggers Set",
+      desc: "",
+      image: "https://i.postimg.cc/NfzMDVHP/willie-mosconi-slider.jpg",
+    },
+  },
+  {
+    category: {
+      title: "Track Pant",
+      desc: "",
+      image: "https://i.postimg.cc/NfzMDVHP/willie-mosconi-slider.jpg",
+    },
+  },
+  {
+    category: {
+      title: "Trousers",
+      desc: "",
+      image: "https://i.postimg.cc/NfzMDVHP/willie-mosconi-slider.jpg",
+    },
+  },
+  {
+    category: {
+      title: "Sweatshirt",
       desc: "",
       image: "https://i.postimg.cc/NfzMDVHP/willie-mosconi-slider.jpg",
     },
@@ -56,6 +105,7 @@ const createItem = (position, idx) => {
     category: categories[idx].category,
   };
 
+  console.log(position);
   switch (position) {
     case length - 1:
     case length + 1:
@@ -64,7 +114,7 @@ const createItem = (position, idx) => {
     case length:
       break;
     default:
-      item.styles = { ...item.styles, opacity: 0 };
+      item.styles = { ...item.styles, opacity: 1 };
       break;
   }
 
@@ -73,7 +123,7 @@ const createItem = (position, idx) => {
 
 const CarouselSlideItem = ({ pos, idx, activeIdx }) => {
   const item = createItem(pos, idx, activeIdx);
-
+  console.log(item);
   return (
     <Link to={`/category/${item.category.title}`}>
       <li className="carousel__slide-item" style={item.styles}>
@@ -90,6 +140,7 @@ const CarouselSlideItem = ({ pos, idx, activeIdx }) => {
 };
 
 const keys = Array.from(Array(categories.length).keys());
+console.log(keys);
 
 export const Carousel = () => {
   const [items, setItems] = useState(keys);
@@ -139,14 +190,14 @@ export const Carousel = () => {
         </button>
         <div className="carousel__container">
           <ul className="carousel__slide-list">
-            {items.map((pos, i) => (
-              <CarouselSlideItem
+            {items.map((pos, i) => {
+              return <CarouselSlideItem
                 key={i}
                 idx={i}
                 pos={pos}
                 activeIdx={activeIdx}
               />
-            ))}
+            })}
           </ul>
         </div>
         <button
