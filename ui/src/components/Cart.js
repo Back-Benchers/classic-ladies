@@ -6,15 +6,16 @@ export default function Cart() {
 
     const value = useContext(DataContext);
     const [cart, setCart] = value.cart;
+    const [cartProductCount, setCartProductCount] = value.cartProductCount;
     const [total, setTotal] = useState(0);
     const [allItemCost, setAllItemCost] = useState(0);
+    console.log(cartProductCount);
 
     useEffect(() => {
 
         const getTotal = () => {
             let result = cart.reduce((prev, item) => {
-                return prev + (item.salePrice);
-                return item.price;
+                return prev + (item.salePrice * cartProductCount[cartProductCount.findIndex(p => p.productId === item.id)]?.cartCount);
             }, 0);
 
             setAllItemCost(result);
@@ -35,24 +36,24 @@ export default function Cart() {
         }
 
         getTotal();
-    }, [cart])
+    }, [cart, cartProductCount])
 
     const increaseProduct = id => {
-        cart.forEach(item => {
-            if (item.id === id) {
-                item.count += 1;
+        cartProductCount.forEach(item => {
+            if (item.productId === id) {
+                item.cartCount += 1;
             }
         })
-        setCart([...cart]);
+        setCartProductCount([...cartProductCount]);
     }
 
     const decreaseProduct = id => {
-        cart.forEach(item => {
-            if (item.id === id) {
-                item.count === 1 ? item.count = 1 : item.count -= 1;
+        cartProductCount.forEach(item => {
+            if (item.productId === id) {
+                item.cartCount === 1 ? item.cartCount = 1 : item.cartCount -= 1;
             }
         })
-        setCart([...cart]);
+        setCartProductCount([...cartProductCount]);
     }
 
     const removeProduct = id => {
@@ -85,7 +86,7 @@ export default function Cart() {
 
                                     <div className="amount">
                                         <button className="count" onClick={() => decreaseProduct(product.id)}> - </button>
-                                        <span>{0}</span>
+                                        <span>{cartProductCount[cartProductCount.findIndex(p => p.productId === product.id)]?.cartCount}</span>
                                         <button className="count" onClick={() => increaseProduct(product.id)}> + </button>
                                     </div>
 
