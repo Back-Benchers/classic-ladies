@@ -12,7 +12,7 @@ const offerModel = (sequelize) => {
             allowNull: false
         },
         url: {
-            type: Sequelize.ARRAY(Sequelize.TEXT),
+            type: Sequelize.STRING,
             allowNull: false
         },
         expiry: {
@@ -27,7 +27,7 @@ const offerModel = (sequelize) => {
             allowNull: false
         },
         categories: {
-            type: Sequelize.ARRAY(Sequelize.STRING),
+            type: Sequelize.STRING,
             allowNull: false
         }
     });

@@ -1,10 +1,10 @@
 const dbConfig = {
-    HOST: "localhost",
-    PORT: "5432",
-    USER: "postgres",
-    PASSWORD: "postgres",
-    DB: "app",
-    dialect: "postgres",
+    HOST: "classic-free.cwhlhl9ooiyq.us-east-2.rds.amazonaws.com",
+    PORT: "3306",
+    USER: "admin",
+    PASSWORD: "rg5425261",
+    DB: "CLASSIC",
+    dialect: "mysql",
     pool: {
         max: 5,
         min: 0,

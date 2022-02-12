@@ -3,7 +3,6 @@ import helmet from "helmet";
 import winston from "winston";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
-import path from "path";
 
 import log from "./logger/logger";
 import apiClient from "./api/apiClientRouter";
@@ -43,20 +42,6 @@ function errorHandler(err, req, res, next) {
   });
 }
 
-/* if (process.env.NODE_ENV === "production" || process.env.NODE_ENV === "docker") {
-    // Set static folder
-    process.env.PWD = process.cwd();
-    app.use(express.static(process.env.PWD, "adminui", "build"));
-    app.get('/', function(req, res) {
-        res.sendFile(process.env.PWD, "adminui", "build", "index.html");
-    });
-} else {
-    app.use(express.static(path.join(__dirname, "adminui", "build")));
-    app.get('/', function(req, res) {
-        res.sendFile(path.join(__dirname, "adminui", "build", "index.html"));
-    });
-} */
-
 app.get("/", (req, res) => {
   res.send("hello");
 });
@@ -68,9 +53,7 @@ app.use(notFound);
 app.use(errorHandler);
 
 const server = app.listen(process.env.PORT, function () {
-  let host = server.address().address;
-  let port = server.address().port;
-  winston.info("app listening at http://localhost:" + port);
-  table.sequelize.sync({ alter: true });
-  winston.info("db conn esablished");
+  table.sequelize.sync({ alter: true}).then(() => {
+    winston.info("db conn esablished");
+  });
 });
