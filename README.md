@@ -1,5 +1,6 @@
 # TheClassicLadies
-ecommerce app
+
+
 Commands:
     1. npm run dev:create -> create docker container for first time
     2. npm run dev:stop -> stop all containers

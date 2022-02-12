@@ -1,21 +1,24 @@
-# build environment
-FROM node:16.13.0-alpine as build
-WORKDIR /app
-#copy the react app to the container
-COPY . /app/ 
+FROM node:alpine as builder
 
-# #prepare the contiainer for building react 
-RUN npm install --silent
-RUN npm install react-scripts@3.0.1 -g --silent 
-RUN npm run build 
+COPY package.json package-lock.json ./
 
-#prepare nginx
-FROM nginx:1.16.0-alpine
+RUN npm install && mkdir /adminui && mv ./node_modules ./adminui
 
-COPY --from=build /app/build /usr/share/nginx/html
-RUN rm /etc/nginx/conf.d/default.conf
-COPY nginx/nginx.conf /etc/nginx/conf.d
+WORKDIR /adminui
 
-#fire up nginx
-EXPOSE 80 
-CMD ["nginx","-g","daemon off;"]
+COPY . .
+
+RUN npm run build
+
+
+FROM nginx:alpine
+
+COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
+
+RUN rm -rf /usr/share/nginx/html/*
+
+COPY --from=builder /adminui/build /usr/share/nginx/html
+
+EXPOSE 80
+
+ENTRYPOINT ["nginx", "-g", "daemon off;"]

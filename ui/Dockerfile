@@ -1,8 +1,24 @@
-FROM node:16.13.0-alpine
-WORKDIR /app
+FROM node:alpine as builder
 
-COPY package.json ./
-COPY package-lock.json ./
-COPY ./ ./
-RUN npm install
-CMD ["npm", "run", "start"]
+COPY package.json package-lock.json ./
+
+RUN npm install && mkdir /ui && mv ./node_modules ./ui
+
+WORKDIR /ui
+
+COPY . .
+
+RUN npm run build
+
+
+FROM nginx:alpine
+
+COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
+
+RUN rm -rf /usr/share/nginx/html/*
+
+COPY --from=builder /ui/build /usr/share/nginx/html
+
+EXPOSE 80
+
+ENTRYPOINT ["nginx", "-g", "daemon off;"]
