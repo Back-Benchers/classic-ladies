@@ -7,8 +7,10 @@ import Products from "./components/Products";
 import { DataProvider } from "./components/DataProvider";
 import Details from "./components/Details/Details";
 import Cart from "./components/Cart";
-import Register from "./components/Signup/Register";
+import Register from "./components/LoginSignup/Register";
+import Login from "./components/LoginSignup/Login";
 import Error from "./components/Error";
+import CategoryProducts from "./components/CategoryProducts";
 
 function App() {
 
@@ -16,27 +18,27 @@ function App() {
 
   return (
     <DataProvider>
-      <>
-        <Switch>
-          {/* <Route exact path="/error404" component={Error} /> */}
-          <Route>
+      <Switch>
+        {/* <Route exact path="/error404" component={Error} /> */}
+        <Route>
 
-            <Header setSearch={setSearch} />
-            <Switch>
-              <Route exact path="/" component={() => <Home search={search} />} />
-              <Route exact path="/products" component={() => <Products search={search} />} />
-              <Route exact path="/products/:id" component={Details} />
-              <Route exact path="/cart" component={Cart} />
-              <Route exact path="/register" component={Register} />
-              <Route path='*' component={Error} />
-              {/* <Redirect to="/error404" /> */}
-              <Products />
-            </Switch>
-            <Footer />
-            
-          </Route>
-        </Switch>
-      </>
+          <Header setSearch={setSearch} />
+          <Switch>
+            <Route exact path="/" component={() => <Home search={search} />} />
+            <Route exact path="/products" component={() => <Products search={search} />} />
+            <Route exact path="/category/:type" component={() => <CategoryProducts />} />
+            <Route exact path="/products/:id" component={Details} />
+            <Route exact path="/cart" component={Cart} />
+            <Route exact path="/register" component={Register} />
+            <Route exact path="/login" component={Login} />
+            <Route path='*' component={Error} />
+            {/* <Redirect to="/error404" /> */}
+            <Products />
+          </Switch>
+          <Footer />
+
+        </Route>
+      </Switch>
     </DataProvider>
   );
 }

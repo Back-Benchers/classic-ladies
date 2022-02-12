@@ -12,7 +12,7 @@ const offerModel = (sequelize) => {
             allowNull: false
         },
         url: {
-            type: Sequelize.STRING,
+            type: Sequelize.ARRAY(Sequelize.TEXT),
             allowNull: false
         },
         expiry: {

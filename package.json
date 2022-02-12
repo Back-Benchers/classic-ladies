@@ -8,11 +8,11 @@
         "dev:app": "nodemon --es-module-specifier-resolution=node app/index.js",
         "dev:ui": "npm run --prefix ui dev",
         "dev:adminui": "npm run --prefix adminui dev",
-        "app:create": "docker compose up -d",
-        "app:start": "docker compose start",
-        "app:stop": "docker compose stop",
-        "app:clean": "docker compose down -v",
-        "pg:connect": "docker exec -it classic-ladies_postgres_1 psql -U postgres"
+        "dev:create": "docker compose up -d",
+        "dev:start": "docker compose start",
+        "dev:stop": "docker compose stop",
+        "dev:clean": "docker compose down",
+        "pg:connect": "docker exec -it classic-ladies-db-1 psql -U postgres"
     },
     "repository": {
         "type": "git",
@@ -36,6 +36,8 @@
         "express": "^4.17.1",
         "express-jwt": "^6.1.0",
         "file-type": "^16.5.3",
+        "firebase": "^9.6.5",
+        "firebaseui": "^6.0.0",
         "helmet": "^4.6.0",
         "install": "^0.13.0",
         "jsonwebtoken": "^8.5.1",
@@ -46,6 +48,7 @@
         "pg": "^8.7.1",
         "pg-hstore": "^2.3.4",
         "react-scripts": "^4.0.3",
+        "react-toastify": "^8.1.1",
         "sequelize": "^6.8.0",
         "winston": "^3.3.3"
     },

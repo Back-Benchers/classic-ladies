@@ -1,14 +1,17 @@
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState, useEffect } from "react";
+import { products } from "../utils/mockData";
+import { toast } from 'react-toastify';
 
 export const DataContext = createContext();
 
 export const DataProvider = (props) => {
+  const [product, setProduct] = useState([]);
+  const [cart, setCart] = useState([]);
+  const [cartProductCount, setCartProductCount] = useState([{}]);
+  const [user, setUser] = useState({ uid: "", displayName: "", email: "", phoneNumber: "", photoURL: "" });
 
-    const [products, setProducts] = useState([]);
-
-    const getData = () => {
-
-        fetch('data.json'
+  const getData = () => {
+    /* fetch('data.json'
             , {
                 headers: {
                     'Content-Type': 'application/json',
@@ -21,54 +24,72 @@ export const DataProvider = (props) => {
             })
             .then(function (myJson) {
                 setProducts(myJson)
-            });
+            }); */
+    setProduct(products);
+  };
+
+  const addCart = (id) => {
+    const check = cart.every((item) => {
+      return item.id !== id;
+    });
+    console.log(check);
+    if (check) {
+      const data = product.filter((product) => {
+        return product.id === id;
+      });
+      console.log(data);
+      setCart([...cart, ...data]);
+      toast.success(`${data[0].title} added to Cart!`, {
+        position: "bottom-left",
+        autoClose: 2500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      setCartProductCount([...cartProductCount, { productId: product.id, cartCount: 1 }]);
+    } else {
+      alert("Product has been added to cart.");
+    }
+  };
+
+  const setNewUser = (newUser) => {
+    setUser({
+      uid: newUser.uid, displayName: newUser.displayName, email: newUser.email, phoneNumber: newUser.phoneNumber,
+      photoURL: newUser.photoURL
+    });
+  };
+
+  useEffect(() => {
+    getData();
+
+    const storageCart = JSON.parse(localStorage.getItem("storageCart"));
+    if (storageCart) {
+      setCart(storageCart);
     }
 
-    useEffect(() => {
-        getData()
-    }, [])
-
-    const [cart, setCart] = useState([]);
-
-    const addCart = (id) => {
-        const check = cart.every(item => {
-            return item.pid !== id;
-        })
-
-        if (check) {
-            const data = products.filter(product => {
-                return product.pid === id;
-            })
-            setCart([...cart, ...data]);
-        }
-        else {
-            alert("Product has been added to cart.");
-        }
+    const loggedInUser = localStorage.getItem("user");
+    if (loggedInUser) {
+      const foundUser = JSON.parse(loggedInUser);
+      setUser(foundUser);
     }
+  }, []);
 
-    useEffect(() => {
+  useEffect(() => {
+    localStorage.setItem("storageCart", JSON.stringify(cart));
+  }, [cart]);
 
-        const storageCart = JSON.parse(localStorage.getItem("storageCart"));
+  const value = {
+    products: [product, setProduct],
+    cart: [cart, setCart],
+    addCart: addCart,
+    user: [user, setUser],
+    setNewUser: setNewUser,
+    cartProductCount: [cartProductCount, setCartProductCount]
+  };
 
-        if (storageCart) {
-            setCart(storageCart);
-        }
-    }, [])
-
-    useEffect(() => {
-
-        localStorage.setItem("storageCart", JSON.stringify(cart));
-    }, [cart])
-
-    const value = {
-        products: [products, setProducts],
-        cart: [cart, setCart],
-        addCart: addCart
-    }
-
-    return (
-        <DataContext.Provider value={value}>
-            {props.children}
-        </DataContext.Provider>
-    )
-}
+  return (
+    <DataContext.Provider value={value}>{props.children}</DataContext.Provider>
+  );
+};

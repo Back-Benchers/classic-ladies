@@ -1,6 +1,6 @@
-version: '3.7'
+version: "3.7"
 services:
-    postgres:
+    db:
         image: postgres:10-alpine
         restart: always
         environment:
@@ -17,44 +17,14 @@ services:
         volumes: 
           - ./postgres:/var/lib/postgresql/data
 
-    app:
-        container_name: app
-        hostname: app
-        build:
-          context: .
-          dockerfile: Dockerfile
-        depends_on:
-          - "postgres"
-        ports:
-          - '5000:5000'
-        volumes: 
-          - /app/node_modules
-          - ./:/app
-
-    # adminui:
-    #     container_name: adminui
-    #     hostname: adminui
-    #     build:
-    #       context: ./adminui
-    #       dockerfile: Dockerfile
-    #     ports:
-    #       - '5002:80'
-    #     volumes: 
-    #       - /adminui/node_modules
-    #       - ./:/adminui
-    
-    # ui:
-    #     container_name: ui
-    #     hostname: ui
-    #     build:
-    #       context: ./ui
-    #       dockerfile: Dockerfile
-    #     ports:
-    #       - '5001:80'
-    #     volumes: 
-    #       - /ui/node_modules
-    #       - ./:/ui
-    
-    
-
-
+    # app:
+#         build:
+#           context: .
+#           dockerfile: Dockerfile
+#         depends_on:
+#           - "postgres"
+#         ports:
+#           - '5000:5000'
+#         volumes: 
+#           - /app/node_modules
+#           - ./:/app

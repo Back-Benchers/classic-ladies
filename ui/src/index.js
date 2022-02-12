@@ -4,7 +4,7 @@ import App from './App';
 import './scss/main.scss';
 import { HashRouter } from 'react-router-dom';
 
-document.title = '|Ecom Portal|The Classic Ladies|';
+document.title = 'The Classic Ladies';
 ReactDOM.render(
   <HashRouter>
     <App />

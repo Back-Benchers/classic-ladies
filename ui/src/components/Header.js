@@ -8,6 +8,11 @@ export default function Header(props) {
     const [menu, setMenu] = useState(false);
     const value = useContext(DataContext);
     const [cart] = value.cart;
+    const user = value.user[0];
+    const setNewUser = value.setNewUser;
+
+    console.log(user);
+
 
     const toggleMenu = () => {
         setMenu(!menu);
@@ -21,8 +26,8 @@ export default function Header(props) {
         },
 
         styleMenu: {
-            top: menu ? 0 : "-100%",
-            backgroundColor: "#ffffff"
+            right: menu ? 0 : "-100%",
+            backgroundColor: "whitesmoke"
         }
     };
 
@@ -30,22 +35,26 @@ export default function Header(props) {
         props.setSearch(event.target.value);
     };
 
-    return (
-        <header>
-            <div className="logo">
-                <h1><Link to="/">Classic Ladies</Link></h1>
-            </div>
+    const logout = () => {
+        localStorage.clear();
+        setNewUser({ uid: "", displayName: "", email: "", phoneNumber: "", photoURL: "" });
+    }
 
+    return (
+        <header className="header">
+            <div className="logo">
+                <Link to="/"><img className="img-logo" src="./tcl2.png" alt="The Classic Ladies" /></Link>
+            </div>
             <form action="#" autoComplete="off">
                 <input type="text" id="input-search" name="search" placeholder="Search..." onChange={handleChange} />
             </form>
 
             <ul style={styles.styleMenu}>
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="/products">New Products</Link></li>
-                <li><Link to="/register">Login/Register</Link></li>
+                <li><Link to="/products">Categories</Link></li>
+                {user.displayName ? <li><Link to="/" onClick={logout}>{user.displayName}</Link></li> :
+                    <li><Link to="/register">Login/Register</Link></li>}
                 <li onClick={toggleMenu}>
-                    <img src="cross.png" alt="close-menu" width="30" className="menu" />
+                    <img src="./cross.png" alt="close-menu" className="menu" />
                 </li>
             </ul>
 
@@ -57,7 +66,7 @@ export default function Header(props) {
             </div>
 
             <div className="menu" onClick={toggleMenu}>
-                <img src="menu.svg" alt="menu" width="30" />
+                <img src="menu.svg" alt="menu" />
             </div>
 
         </header>

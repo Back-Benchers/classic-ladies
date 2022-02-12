@@ -14,8 +14,9 @@ export default function Details() {
     const imgDiv = useRef();
 
     const details = products.filter((product) => {
-        return product.pid === id;
-    })
+        return product.id == id;
+    });
+    console.log(details);
 
     const handleMouseMove = (e) => {
         const { left, top, width, height } = e.target.getBoundingClientRect();
@@ -29,17 +30,17 @@ export default function Details() {
         <section>
             {
                 details.map(product => (
-                    <div className="details" key={product.pid}>
-                        <div className="details-img" onMouseMove={handleMouseMove} style={{ backgroundImage: `url(${product.images[index]})` }} ref={imgDiv} onMouseLeave={() => imgDiv.current.style.backgroundPosition = `center`} />
+                    <div className="details" key={product.id}>
+                        <div className="details-img" onMouseMove={handleMouseMove} style={{ backgroundImage: `url(${product.url[0]})` }} ref={imgDiv} onMouseLeave={() => imgDiv.current.style.backgroundPosition = `center`} />
 
                         <div className="details-content">
                             <h2 title={product.title}>{product.title}</h2>
-                            <Colors colors={product.colors} />
-                            <p>{product.description}</p>
-                            <p>{product.content}</p>
-                            <DetailsThumb images={product.images} setIndex={setIndex} />
-                            <h3>&#8377; {product.price}</h3>
-                            <Link to="/cart" className="details-addtocart" onClick={() => addCart(product.pid)}>Add to Cart</Link>
+                            {/* <Colors colors={product.colors} /> */}
+                            <p>{product.description.toString()}</p>
+                            <p>{product.metadata.toString()}</p>
+                            {/* <DetailsThumb images={product.images} setIndex={setIndex} /> */}
+                            <h3>&#8377; {product.salePrice}</h3>
+                            <Link to="/cart" className="details-addtocart" onClick={() => addCart(product.id)}>Add to Cart</Link>
                         </div>
 
                     </div>
