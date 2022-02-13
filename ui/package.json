@@ -11,6 +11,7 @@
         "@testing-library/user-event": "^12.8.3",
         "apexcharts": "^3.30.0",
         "boxicons": "^2.0.9",
+        "express": "^4.17.2",
         "npm-watch": "^0.11.0",
         "react": "^17.0.2",
         "react-dom": "^17.0.2",
@@ -23,9 +24,9 @@
         "web-vitals": "^1.1.2"
     },
     "scripts": {
-        "start": "react-scripts --openssl-legacy-provider start",
+        "start": "node app",
         "dev": "PORT=5001 react-scripts start",
-        "build": "react-scripts --openssl-legacy-provider build",
+        "build": "react-scripts build",
         "watch": "npm-watch",
         "test": "react-scripts test",
         "serve": "PORT=5001 serve -s build",
