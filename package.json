@@ -4,7 +4,7 @@
     "description": "Web App Project (ReactJS)",
     "main": "src/app/index.js",
     "scripts": {
-        "start": "node --prefix ui app",
+        "start": "node --es-module-specifier-resolution=node app/index.js",
         "dev": "concurrently  \"npm run dev:ui\" \"npm run dev:adminui\"",
         "dev:app": "nodemon --es-module-specifier-resolution=node app/index.js",
         "dev:ui": "npm run --prefix ui dev",
