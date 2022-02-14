@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Header from "./components/Header";
-import { Redirect, Switch, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
 import Footer from "./components/Footer";
 import Products from "./components/Products";
@@ -19,28 +19,22 @@ function App() {
 
   return (
     <DataProvider>
-      <Switch>
+      <Header setSearch={setSearch} />
+      <Routes>
         {/* <Route exact path="/error404" component={Error} /> */}
-        <Route>
-
-          <Header setSearch={setSearch} />
-          <Switch>
-            <Route exact path="/" component={() => <Home search={search} />} />
-            <Route exact path="/products" component={() => <Products search={search} />} />
-            <Route exact path="/category/:type" component={() => <CategoryProducts />} />
-            <Route exact path="/products/:id" component={Details} />
-            <Route exact path="/cart" component={Cart} />
-            <Route exact path="/register" component={Register} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/profile" component={UserProfile} />
-            <Route path='*' component={Error} />
-            {/* <Redirect to="/error404" /> */}
-            <Products />
-          </Switch>
-          <Footer />
-
-        </Route>
-      </Switch>
+        <Route exact path="/" element={<Home search={search} />} />
+        <Route exact path="/products" element={<Products search={search} />} />
+        <Route exact path="/category/:type" element={<CategoryProducts />} />
+        <Route exact path="/products/:id" element={<Details />} />
+        <Route exact path="/cart" element={<Cart />} />
+        <Route exact path="/register" element={<Register />} />
+        <Route exact path="/login" element={<Login />} />
+        <Route exact path="/profile" element={<UserProfile />} />
+        <Route path='*' element={<Error />} />
+        {/* <Navigate to="/error404" /> */}
+      </Routes>
+      <Products />
+      <Footer />
     </DataProvider>
   );
 }

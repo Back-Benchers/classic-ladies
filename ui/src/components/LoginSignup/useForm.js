@@ -7,7 +7,7 @@ import { useContext } from "react";
 const useForm = (validate) => {
     const value = useContext(DataContext);
     const [values, setValues] = useState({ username: "", firstname: "", lastname: "", email: "", phone: "", address: "", password: "" });
-    const [errors, setErrors] = useState({});
+    const [errors] = useState({});
     const [isSubmitting, setIsSubmitting] = useState(false);
     const setNewUser = value.setNewUser;
 
@@ -73,7 +73,7 @@ const useForm = (validate) => {
                     displayName: values.username,
                     photoURL: "",
                     phoneNumber: values.phone,
-                    ["address"]: values.address
+                    address: values.address
                 }).then(() => {
                     // Profile updated!
                     // ...

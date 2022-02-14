@@ -14,7 +14,7 @@ export default function Products(props) {
     return (
         <section>
             <div className="products">
-                {
+                {/* {
                     products?.filter(product => {
                         if (product?.categories?.toLowerCase().includes(props.search.toLowerCase())) {
                             return product;
@@ -31,14 +31,14 @@ export default function Products(props) {
                             <div className="products-content">
                                 <h3 title={product.title}>
                                     <Link to={`/products/${product.id}`}>{product.title}</Link>
-                                </h3>
-                                {/* <p className="products-desc">{product.description.toString()}</p> */}
-                                <p className="products-price">&#8377; {product.salePrice}</p>
+                                </h3> */}
+                {/* <p className="products-desc">{product.description.toString()}</p> */}
+                {/* <p className="products-price">&#8377; {product.salePrice}</p>
                                 <button onClick={() => addCart(product.id)}>Add to Cart</button>
                             </div>
                         </div>
                     ))
-                }
+                } */}
             </div>
             <ToastContainer
                 position="bottom-left"

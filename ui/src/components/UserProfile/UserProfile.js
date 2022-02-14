@@ -28,7 +28,6 @@ export default function UserProfile() {
                 });
                 // localStorage.setItem("user", JSON.stringify(user));
                 console.log(auth.currentUser);
-                user = value.user[0];
                 console.log(user);
                 // setValues({ username: "", firstname: "", lastname: "", email: "", phone: "", address: "", password: "" });
             }).catch((error) => {
@@ -75,7 +74,7 @@ export default function UserProfile() {
                     First Name
                     <br />
                     {!editMode &&
-                        <input type="text" name="firstname" className="first-name disable" disabled="true" value={user.displayName ? user.displayName.split(" ")[0] : "First Name"} />
+                        <input type="text" name="firstname" className="first-name disable" disabled={true} value={user.displayName ? user.displayName.split(" ")[0] : "First Name"} />
                     }
                     {editMode &&
                         <input type="text" name="firstname" className="first-name" onChange={handleInput} value={values.firstname} />
@@ -85,7 +84,7 @@ export default function UserProfile() {
                     Last Name
                     <br />
                     {!editMode &&
-                        <input type="text" name="lastname" className="first-name disable" disabled="true" value={user.displayName ? user.displayName.split(" ")[1] : "Last Name"} />
+                        <input type="text" name="lastname" className="first-name disable" disabled={true} value={user.displayName ? user.displayName.split(" ")[1] : "Last Name"} />
                     }
                     {editMode &&
                         <input type="text" name="lastname" className="first-name" onChange={handleInput} value={values.lastname} />
@@ -97,7 +96,7 @@ export default function UserProfile() {
                     Email
                     <br />
                     {!editMode &&
-                        <input type="email" name="email" className="email disable" disabled="true" value={user.email ? user.email : "email@example.com"} />
+                        <input type="email" name="email" className="email disable" disabled={true} value={user.email ? user.email : "email@example.com"} />
                     }
                     {editMode &&
                         <input type="email" name="email" className="email" onChange={handleInput} value={values.email} />
@@ -109,7 +108,7 @@ export default function UserProfile() {
                     Contact Numebr
                     <br />
                     {!editMode &&
-                        <input type="number" name="phone" className="contact-number disable" disabled="true" value={user.phoneNumber ? user.phoneNumber : 1234567890} />
+                        <input type="number" name="phone" className="contact-number disable" disabled={true} value={user.phoneNumber ? user.phoneNumber : 1234567890} />
                     }
                     {editMode &&
                         <input type="number" name="phone" className="contact-number" onChange={handleInput} value={values.phone} />
@@ -121,7 +120,7 @@ export default function UserProfile() {
                     Address
                     <br />
                     {!editMode &&
-                        <textarea name="address" className="address disable" disabled="true" cols="40" rows="5"
+                        <textarea name="address" className="address disable" disabled={true} cols="40" rows="5"
                             defaultValue={user.address ? user.address : "Your Address"}></textarea>
                     }
                     {editMode &&

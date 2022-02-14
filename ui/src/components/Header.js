@@ -9,7 +9,7 @@ export default function Header(props) {
     const value = useContext(DataContext);
     const [cart] = value.cart;
     const user = value.user[0];
-    const setNewUser = value.setNewUser;
+    // const setNewUser = value.setNewUser;
 
     console.log(user);
 
@@ -35,10 +35,10 @@ export default function Header(props) {
         props.setSearch(event.target.value);
     };
 
-    const logout = () => {
-        localStorage.clear();
-        setNewUser({ uid: "", displayName: "", email: "", phoneNumber: "", photoURL: "" });
-    }
+    // const logout = () => {
+    //     localStorage.clear();
+    //     setNewUser({ uid: "", displayName: "", email: "", phoneNumber: "", photoURL: "" });
+    // }
 
     return (
         <header className="header">

@@ -8,7 +8,7 @@ import CancelIcon from '@material-ui/icons/Cancel';
 import { Carousel } from './Carousel';
 import { Slideshow } from './Slider';
 import Banner from "./Banner/Banner"
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function Home(props) {

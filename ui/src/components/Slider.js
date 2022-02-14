@@ -4,7 +4,7 @@ const colors = ["#0088FE", "#00C49F", "#FFBB28"];
 const delay = 2500;
 
 export function Slideshow() {
-  const [index, setIndex] = React.useState(0);
+  const [index, setIndex] = useState(0);
   const timeoutRef = React.useRef(null);
 
   function resetTimeout() {
@@ -13,7 +13,7 @@ export function Slideshow() {
     }
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     resetTimeout();
     timeoutRef.current = setTimeout(
       () =>

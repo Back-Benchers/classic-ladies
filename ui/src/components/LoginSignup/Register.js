@@ -1,8 +1,8 @@
 import React from 'react';
-import { Link, Redirect } from "react-router-dom"
+import { Link, Navigate } from "react-router-dom"
 import useForm from "./useForm";
 import validate from "./Validation";
-import FormSuccess from "./FormSuccess";
+// import FormSuccess from "./FormSuccess";
 
 export default function Register() {
 
@@ -10,7 +10,7 @@ export default function Register() {
 
     return (
         <section>
-            {(Object.keys(errors).length === 0 && isSubmitting) ? (<Redirect to="/" />) :
+            {(Object.keys(errors).length === 0 && isSubmitting) ? (<Navigate to="/" />) :
                 (<div className="form-container">
                     <h2>Login/Register</h2>
                     <form onSubmit={handleSubmit} autoComplete="off" noValidate>

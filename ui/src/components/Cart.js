@@ -36,6 +36,8 @@ export default function Cart() {
         }
 
         getTotal();
+
+        return () => setTotal(0);
     }, [cart, cartProductCount])
 
     const increaseProduct = id => {

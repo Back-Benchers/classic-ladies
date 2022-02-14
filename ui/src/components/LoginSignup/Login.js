@@ -1,43 +1,43 @@
 import React from 'react';
-import { Link, Redirect } from "react-router-dom"
+import { Link, Navigate } from "react-router-dom"
 import useForm from "./useForm";
 import validate from "./Validation";
-import FormSuccess from "./FormSuccess";
-import { GoogleAuthProvider } from "firebase/auth";
-import { getAuth, signInWithPopup } from "firebase/auth";
+// import FormSuccess from "./FormSuccess";
+// import { GoogleAuthProvider } from "firebase/auth";
+// import { getAuth, signInWithPopup } from "firebase/auth";
 
 export default function Login() {
 
     const { handleInput, handleLogin, values, errors, isSubmitting } = useForm(validate);
 
-    const handleGoogleSignin = () => {
-        const provider = new GoogleAuthProvider();
-        provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
+    // const handleGoogleSignin = () => {
+    //     const provider = new GoogleAuthProvider();
+    //     provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
 
-        const auth = getAuth();
-        signInWithPopup(auth, provider)
-            .then((result) => {
-                // This gives you a Google Access Token. You can use it to access the Google API.
-                const credential = GoogleAuthProvider.credentialFromResult(result);
-                const token = credential.accessToken;
-                // The signed-in user info.
-                const user = result.user;
-                // ...
-            }).catch((error) => {
-                // Handle Errors here.
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                // The email of the user's account used.
-                const email = error.email;
-                // The AuthCredential type that was used.
-                const credential = GoogleAuthProvider.credentialFromError(error);
-                // ...
-            });
-    }
+    //     const auth = getAuth();
+    //     signInWithPopup(auth, provider)
+    //         .then((result) => {
+    //             // This gives you a Google Access Token. You can use it to access the Google API.
+    //             const credential = GoogleAuthProvider.credentialFromResult(result);
+    //             const token = credential.accessToken;
+    //             // The signed-in user info.
+    //             const user = result.user;
+    //             // ...
+    //         }).catch((error) => {
+    //             // Handle Errors here.
+    //             const errorCode = error.code;
+    //             const errorMessage = error.message;
+    //             // The email of the user's account used.
+    //             const email = error.email;
+    //             // The AuthCredential type that was used.
+    //             const credential = GoogleAuthProvider.credentialFromError(error);
+    //             // ...
+    //         });
+    // }
 
     return (
         <section>
-            {(Object.keys(errors).length === 0 && isSubmitting) ? (<Redirect to="/" />) :
+            {(Object.keys(errors).length === 0 && isSubmitting) ? (<Navigate to="/" />) :
                 (<div className="form-container">
                     <h2>Login</h2>
                     <form onSubmit={handleLogin} autoComplete="off" noValidate>

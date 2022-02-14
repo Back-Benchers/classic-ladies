@@ -1,8 +1,8 @@
-import React, { useState, useContext, useRef } from 'react';
+import React, { useContext, useRef } from 'react';
 import { useParams, Link } from "react-router-dom";
 import { DataContext } from "../DataProvider";
-import DetailsThumb from "./DetailsThumb";
-import Colors from "./Colors";
+// import DetailsThumb from "./DetailsThumb";
+// import Colors from "./Colors";
 
 export default function Details() {
 
@@ -10,11 +10,11 @@ export default function Details() {
     const value = useContext(DataContext);
     const [products] = value.products;
     const addCart = value.addCart;
-    const [index, setIndex] = useState(0);
+    // const [index, setIndex] = useState(0);
     const imgDiv = useRef();
 
     const details = products.filter((product) => {
-        return product.id == id;
+        return product.id === id;
     });
     console.log(details);
 
